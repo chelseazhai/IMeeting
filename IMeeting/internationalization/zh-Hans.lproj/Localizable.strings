@@ -1,0 +1,20 @@
+/* 
+  Localizable.strings
+  IMeeting
+
+  Created by  on 12-6-14.
+  Copyright (c) 2012年 richitec. All rights reserved.
+*/
+
+// contacts section
+"contacts select view title" = "选择参会者";
+"contacts list table view section header title" = "来自通信录的";
+"meeting contacts table view in meeting section header title" = "在会议中的";
+"meeting contacts table view prein meeting section header title" = "准备加入会议的";
+
+"contact has no phone number alertView title" = "此人没有号码";
+"contact has no phone number alertView button title" = "重新选择";
+
+"contact phone number select actionSheet title" = "选择邀请 %@ 加入会议的号码";
+"contact has been in meeting" = "已经在会议中";
+"contact with user input phone number has been existed in prein meeting" = "使用此号码准备加入会议";

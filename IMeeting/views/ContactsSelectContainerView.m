@@ -1,0 +1,253 @@
+//
+//  ContactsSelectContainerView.m
+//  IMeeting
+//
+//  Created by  on 12-6-15.
+//  Copyright (c) 2012年 richitec. All rights reserved.
+//
+
+#import "ContactsSelectContainerView.h"
+
+#import "CommonToolkit/CommonToolkit.h"
+
+#import "ContactsListTableViewCell.h"
+
+#import "ContactBean+IMeeting.h"
+
+// middle seperate padding
+#define MIDDLE_SEPERATE_PADDING   1.0
+// middle seperate color
+#define MIDDLE_SEPERATE_COLOR [UIColor colorWithIntegerRed:152 integerGreen:158 integerBlue:164 alpha:1.0]
+
+// ContactsSelectContainerView extension
+@interface ContactsSelectContainerView ()
+
+// subview meeting contacts list table view in meeting contacts phone number array
+@property (nonatomic, readonly) NSArray *inMeetingContactsPhoneNumberArray;
+
+// add new contact with user input phone number to meeting contacts list table view prein meeting section
+- (void)addNewContactToMeetingWithPhoneNumber:(NSString *)pPhoneNumber;
+
+@end
+
+
+
+
+@implementation ContactsSelectContainerView
+
+- (id)initWithFrame:(CGRect)frame
+{
+    self = [super initWithFrame:frame];
+    if (self) {
+        // set background color
+        self.backgroundColor = MIDDLE_SEPERATE_COLOR;
+        
+        // set title
+        self.title = NSLocalizedString(@"contacts select view title", nil);
+        
+        // get UIScreen bounds
+        CGRect _screenBounds = [[UIScreen mainScreen] bounds];
+        
+        // update contacts select container view frame
+        self.frame = CGRectMake(_screenBounds.origin.x, _screenBounds.origin.y, _screenBounds.size.width, _screenBounds.size.height - /*statusBar height*/[CommonUtils appStatusBarHeight] - /*navigationBar height*/[CommonUtils appNavigationBarHeight]);
+        
+        // create and init subviews
+        // init addressBook contacts list table view
+        _mABContactsListView = [[ABContactsListView alloc] initWithFrame:CGRectMake(self.frame.origin.x, self.frame.origin.y, self.frame.size.width / 2 - MIDDLE_SEPERATE_PADDING, self.frame.size.height - CONTACTSSEARCH_TOOLBAR_HEIGHT)];
+        // init meeting contacts list table view
+        _mMeetingContactsListView = [[MeetingContactsListView alloc] initWithFrame:CGRectMake(self.frame.size.width / 2 + MIDDLE_SEPERATE_PADDING, _mABContactsListView.frame.origin.y, _mABContactsListView.frame.size.width, _mABContactsListView.frame.size.height)];
+        // init contacts process toolbar
+        _mContactsProcessToolbar = [[ContactsProcessToolbar alloc] initWithFrame:CGRectMake(self.frame.origin.x, self.frame.size.height - CONTACTSSEARCH_TOOLBAR_HEIGHT, self.frame.size.width, CONTACTSSEARCH_TOOLBAR_HEIGHT)];
+        
+        // add addressBook contacts list table view, meeting contacts list table view and contacts process toolbar to contacts select view
+        [self addSubview:_mABContactsListView];
+        [self addSubview:_mMeetingContactsListView];
+        [self addSubview:_mContactsProcessToolbar];
+    }
+    return self;
+}
+
+/*
+// Only override drawRect: if you perform custom drawing.
+// An empty implementation adversely affects performance during animation.
+- (void)drawRect:(CGRect)rect
+{
+    // Drawing code
+}
+*/
+
+- (NSMutableArray *)preinMeetingContactsInfoArray{
+    return _mMeetingContactsListView.preinMeetingContactsInfoArrayRef;
+}
+
+- (void)addSelectedContactToMeetingWithIndexPath:(NSIndexPath *)pIndexPath andSelectedPhoneNumber:(NSString *)pSelectedPhoneNumber{
+    // if the select contact not existed in meeting contacts list table view in meeting section
+    if (![self.inMeetingContactsPhoneNumberArray containsObject:pSelectedPhoneNumber]) {
+        // update selected cell photo image
+        ((ContactsListTableViewCell *)[_mABContactsListView cellForRowAtIndexPath:pIndexPath]).photoImg = CONTACT_SELECTED_PHOTO;
+        
+        // update selected contact select status image
+        ((ContactBean *)[_mABContactsListView.presentContactsInfoArrayRef objectAtIndex:pIndexPath.row]).selectStatusImg = CONTACT_SELECTED_PHOTO;
+        
+        // set selected contact selected phone number
+        ((ContactBean *)[_mABContactsListView.presentContactsInfoArrayRef objectAtIndex:pIndexPath.row]).selectedPhoneNumber = pSelectedPhoneNumber;
+        
+        // add selected contact to meeting contacts list table view prein meeting section
+        [_mMeetingContactsListView.preinMeetingContactsInfoArrayRef addObject:[_mABContactsListView.presentContactsInfoArrayRef objectAtIndex:pIndexPath.row]];
+        [_mMeetingContactsListView insertRowAtIndexPath:[NSIndexPath indexPathForRow:[_mMeetingContactsListView.preinMeetingContactsInfoArrayRef count] - 1 inSection:_mMeetingContactsListView.numberOfSections - 1] withRowAnimation:UITableViewRowAnimationLeft];
+    }
+    else {
+        NSLog(@"Error: the contact had been in the meeting, mustn't add twice");
+        
+        // show toast
+        [[iToast makeText:[NSString stringWithFormat:@"%@ %@", ((ContactBean *)[_mABContactsListView.presentContactsInfoArrayRef objectAtIndex:pIndexPath.row]).displayName, NSLocalizedString(@"contact has been in meeting", nil)]] show];
+    }
+}
+
+- (void)removeSelectedContactFromMeetingWithIndexPath:(NSIndexPath *)pIndexPath{
+    // get selected contact indexPath which in addressBook contacts list table view all contacts info array  and present contacts info array
+    NSIndexPath *_indexPathOfWhichInAllContactsInfoArray = nil;
+    NSIndexPath *_indexPathOfWhichInPresentContactsInfoArray = nil;
+    for (NSInteger _index = 0; _index < [_mABContactsListView.allContactsInfoArrayInABRef count]; _index++) {
+        // compare contact id which in addressBook contacts list table view all contacts info array with selected contact id
+        if (((ContactBean *)[_mABContactsListView.allContactsInfoArrayInABRef objectAtIndex:_index]).id == ((ContactBean *)[_mMeetingContactsListView.preinMeetingContactsInfoArrayRef objectAtIndex:pIndexPath.row]).id) {
+            _indexPathOfWhichInAllContactsInfoArray = [NSIndexPath indexPathForRow:_index inSection:0];
+            
+            // set contact indexPath which in addressBook contacts list table view present contacts info array
+            if ([_mABContactsListView.presentContactsInfoArrayRef containsObject:[_mABContactsListView.allContactsInfoArrayInABRef objectAtIndex:_index]]) {
+                _indexPathOfWhichInPresentContactsInfoArray= [NSIndexPath indexPathForRow:[_mABContactsListView.presentContactsInfoArrayRef indexOfObject:[_mABContactsListView.allContactsInfoArrayInABRef objectAtIndex:_index]] inSection:0];
+            }
+            
+            break;
+        }
+    }
+    
+    // if indexPath not nil, recover image for cell and contact
+    // nil is the selected for removing contact is adding provisionally
+    if (_indexPathOfWhichInAllContactsInfoArray) {
+        // if selected contacts present in addressBook contacts list present contacts info array
+        if (_indexPathOfWhichInPresentContactsInfoArray) {
+            // recover selected cell photo image
+            ((ContactsListTableViewCell *)[_mABContactsListView cellForRowAtIndexPath:_indexPathOfWhichInPresentContactsInfoArray]).photoImg = CONTACT_DEFAULT_PHOTO;
+        }
+        
+        // recover remove contact select status image
+        ((ContactBean *)[_mABContactsListView.allContactsInfoArrayInABRef objectAtIndex:_indexPathOfWhichInAllContactsInfoArray.row]).selectStatusImg = CONTACT_DEFAULT_PHOTO;
+    }
+    else {
+        NSLog(@"Info: provisional contact, needn't to recover original contact attributes");
+    }
+    
+    // remove the selected contact from meeting contacts list table view prein meeting section
+    [_mMeetingContactsListView.preinMeetingContactsInfoArrayRef removeObjectAtIndex:pIndexPath.row];
+    [_mMeetingContactsListView deleteRowAtIndexPath:pIndexPath withRowAnimation:UITableViewRowAnimationTop];
+}
+
+- (void)addContactToMeetingWithPhoneNumber:(NSString *)pPhoneNumber{
+    // has searched result
+    if ([_mABContactsListView.presentContactsInfoArrayRef count] > 0) {
+        // process each result
+        for (NSInteger _index = 0; _index < [_mABContactsListView.presentContactsInfoArrayRef count]; _index++) {
+            // add searched contact to meeting contacts list table view prein meeting section
+            if ([((ContactBean *)[_mABContactsListView.presentContactsInfoArrayRef objectAtIndex:_index]).phoneNumbers containsObject:pPhoneNumber] && ![_mMeetingContactsListView.preinMeetingContactsInfoArrayRef containsObject:[_mABContactsListView.presentContactsInfoArrayRef objectAtIndex:_index]]) {
+                [self addSelectedContactToMeetingWithIndexPath:[NSIndexPath indexPathForRow:_index inSection:0] andSelectedPhoneNumber:pPhoneNumber];
+            }
+            // the searched contact has been existed in meeting contacts list table view prein meeting section with another phone number
+            else if ([((ContactBean *)[_mABContactsListView.presentContactsInfoArrayRef objectAtIndex:_index]).phoneNumbers containsObject:pPhoneNumber]) {
+                NSLog(@"Error: has a contact with user input phone number has been existed in prein meeting");
+                
+                // show toast
+                [[iToast makeText:[NSString stringWithFormat:@"%@ %@", ((ContactBean *)[_mABContactsListView.presentContactsInfoArrayRef objectAtIndex:_index]).displayName, NSLocalizedString(@"contact with user input phone number has been existed in prein meeting", nil)]] show];
+            }
+            // add the user input phone number to meeting contacts list table view prein meeting section
+            else {
+                // generate contact with user input phone number and add to meeting contacts list table view prein meeting section
+                [self addNewContactToMeetingWithPhoneNumber:pPhoneNumber];
+            }
+        }
+    }
+    // no result
+    else {
+        // add the user input phone number to meeting contacts list table view prein meeting section
+        // generate contact with user input phone number and add to meeting contacts list table view prein meeting section
+        [self addNewContactToMeetingWithPhoneNumber:pPhoneNumber];
+    }
+}
+
+- (void)searchContactWithParameter:(NSString *)pParameter{
+    // check search parameter
+    if ([pParameter isEqualToString:@""]) {
+        // show all contacts in addressBook
+        _mABContactsListView.presentContactsInfoArrayRef = [NSMutableArray arrayWithArray:_mABContactsListView.allContactsInfoArrayInABRef];
+    }
+    else {
+        // define temp array
+        NSArray *_tmpArray = nil;
+        
+        // check softKeyboard type
+        switch (_mContactsProcessToolbar.softKeyboardType) {
+            case custom:
+                // search by phone number
+                _tmpArray = [[AddressBookManager shareAddressBookManager] getContactByPhoneNumber:pParameter];
+                break;
+                
+            case iosSystem:
+                // search by name
+                _tmpArray = [[AddressBookManager shareAddressBookManager] getContactByName:pParameter];
+                break;
+        }
+        
+        // define searched contacts array
+        NSMutableArray *_searchedContactsArray = [[NSMutableArray alloc] initWithCapacity:[_tmpArray count]];
+        
+        // compare seached contacts temp array contact with all contacts info array in addressBook contact  
+        for (ContactBean *_searchedContact in _tmpArray) {
+            for (ContactBean *_contact in _mABContactsListView.allContactsInfoArrayInABRef) {
+                // if the two contacts id is equal, add it to searched contacts array
+                if (_contact.id == _searchedContact.id) {
+                    [_searchedContactsArray addObject:_searchedContact];
+                    
+                    break;
+                }
+            }
+        }
+        
+        // set addressBook contacts list view present contacts info array
+        _mABContactsListView.presentContactsInfoArrayRef = _searchedContactsArray;
+    }
+    
+    // reload addressBook contacts list table view data
+    [_mABContactsListView reloadData];
+}
+
+- (void)hideSoftKeyboardWhenBeginScroll{
+    // check softKeyboard it is hidden
+    if (!_mContactsProcessToolbar.softKeyboardHidden) {
+        [_mContactsProcessToolbar performSelector:@selector(indicateSoftKeyboard)];
+    }
+}
+
+- (NSArray *)inMeetingContactsPhoneNumberArray{
+    NSMutableArray *_ret = [[NSMutableArray alloc] initWithCapacity:[_mMeetingContactsListView.inMeetingContactsInfoArrayRef count]];
+    
+    // generate in meeting contacts phone number array
+    for (NSInteger _index = 0; _index < [_mMeetingContactsListView.inMeetingContactsInfoArrayRef count]; _index++) {
+        // add contact phone number to return result which in meeting contacts list table view in meeting section
+        [_ret addObject:[((ContactBean *)[_mMeetingContactsListView.inMeetingContactsInfoArrayRef objectAtIndex:_index]).phoneNumbers objectAtIndex:0]];
+    }
+    
+    return _ret;
+}
+
+- (void)addNewContactToMeetingWithPhoneNumber:(NSString *)pPhoneNumber{
+    // generate contact with user input phone number and add to meeting contacts list table view prein meeting section
+    ContactBean *_newAddedContact = [[ContactBean alloc] init];
+    // set display name and phone number array
+    _newAddedContact.displayName = pPhoneNumber;
+    _newAddedContact.phoneNumbers = [NSArray arrayWithObject:pPhoneNumber];
+    
+    [_mMeetingContactsListView.preinMeetingContactsInfoArrayRef addObject:_newAddedContact];
+    [_mMeetingContactsListView insertRowAtIndexPath:[NSIndexPath indexPathForRow:[_mMeetingContactsListView.preinMeetingContactsInfoArrayRef count] - 1 inSection:_mMeetingContactsListView.numberOfSections - 1] withRowAnimation:UITableViewRowAnimationLeft];
+}
+
+@end

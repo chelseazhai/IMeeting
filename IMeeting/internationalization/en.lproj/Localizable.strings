@@ -1,0 +1,20 @@
+/* 
+  Localizable.strings
+  IMeeting
+
+  Created by  on 12-6-14.
+  Copyright (c) 2012年 richitec. All rights reserved.
+*/
+
+// contacts section
+"contacts select view title" = "Select conference attendee";
+"contacts list table view section header title" = "From addressBook";
+"meeting contacts table view in meeting section header title" = "In conference";
+"meeting contacts table view prein meeting section header title" = "Prepare for join conference";
+
+"contact has no phone number alertView title" = "The contact has no phone number";
+"contact has no phone number alertView button title" = "Reselect again";
+
+"contact phone number select actionSheet title" = "Select %@'s phone number for join conference";
+"contact has been in meeting" = "existed in meeting";
+"contact with user input phone number has been existed in prein meeting" = "use the phone number prepare for joining meeting";
