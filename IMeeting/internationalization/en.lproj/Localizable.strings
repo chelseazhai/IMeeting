@@ -18,3 +18,4 @@
 "contact phone number select actionSheet title" = "Select %@'s phone number for join conference";
 "contact has been in meeting" = "existed in meeting";
 "contact with user input phone number has been existed in prein meeting" = "use the phone number prepare for joining meeting";
+"new added phone number is nil" = "Rejected, new added phone number is nil";

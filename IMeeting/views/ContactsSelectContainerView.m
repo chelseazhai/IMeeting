@@ -240,14 +240,23 @@
 }
 
 - (void)addNewContactToMeetingWithPhoneNumber:(NSString *)pPhoneNumber{
-    // generate contact with user input phone number and add to meeting contacts list table view prein meeting section
-    ContactBean *_newAddedContact = [[ContactBean alloc] init];
-    // set display name and phone number array
-    _newAddedContact.displayName = pPhoneNumber;
-    _newAddedContact.phoneNumbers = [NSArray arrayWithObject:pPhoneNumber];
-    
-    [_mMeetingContactsListView.preinMeetingContactsInfoArrayRef addObject:_newAddedContact];
-    [_mMeetingContactsListView insertRowAtIndexPath:[NSIndexPath indexPathForRow:[_mMeetingContactsListView.preinMeetingContactsInfoArrayRef count] - 1 inSection:_mMeetingContactsListView.numberOfSections - 1] withRowAnimation:UITableViewRowAnimationLeft];
+    // check new added contact phone number
+    if ([pPhoneNumber isNil]) {
+        NSLog(@"%@ - addNewContactToMeetingWithPhoneNumber - phone number is nil", NSStringFromClass(self.class));
+        
+        // show toast
+        [[iToast makeText:NSLocalizedString(@"new added phone number is nil", nil)] show];
+    }
+    else {
+        // generate contact with user input phone number and add to meeting contacts list table view prein meeting section
+        ContactBean *_newAddedContact = [[ContactBean alloc] init];
+        // set display name and phone number array
+        _newAddedContact.displayName = pPhoneNumber;
+        _newAddedContact.phoneNumbers = [NSArray arrayWithObject:pPhoneNumber];
+        
+        [_mMeetingContactsListView.preinMeetingContactsInfoArrayRef addObject:_newAddedContact];
+        [_mMeetingContactsListView insertRowAtIndexPath:[NSIndexPath indexPathForRow:[_mMeetingContactsListView.preinMeetingContactsInfoArrayRef count] - 1 inSection:_mMeetingContactsListView.numberOfSections - 1] withRowAnimation:UITableViewRowAnimationLeft];
+    }
 }
 
 @end

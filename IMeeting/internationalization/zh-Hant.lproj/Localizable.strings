@@ -18,3 +18,4 @@
 "contact phone number select actionSheet title" = "選擇邀請 %@ 加入會議的號碼";
 "contact has been in meeting" = "已經在會議中";
 "contact with user input phone number has been existed in prein meeting" = "使用此號碼準備加入會議";
+"new added phone number is nil" = "操作已被拒絕，新添加的電話號碼為空";
