@@ -47,7 +47,7 @@
         NSMutableArray *_inMeetingContactsInfoArray = [[NSMutableArray alloc] init];
         
         // get all in meeting attendee phone number array from server
-        NSArray *_allInMeetingAttendeePhoneNumberArrayFromServer = [ContactsSelectViewController allInMeetingAttendeePhoneNumberArrayFromServer];
+        NSArray *_allInMeetingAttendeePhoneNumberArrayFromServer = [ContactsSelectViewController allInMeetingAttendeesPhoneNumberArrayFromServer];
         
         // init in meeting contacts info array
         for (NSInteger _index = 0; _index < [_allInMeetingAttendeePhoneNumberArrayFromServer count]; _index++) {
