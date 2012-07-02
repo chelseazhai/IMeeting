@@ -176,6 +176,9 @@
                 else {
                     // generate contact with user input phone number and add to meeting contacts list table view prein meeting section
                     [self addNewContactToMeetingWithPhoneNumber:pPhoneNumber];
+                    
+                    // add new contact to meeting once, then return immediately
+                    break;
                 }
             }
         }
