@@ -25,6 +25,17 @@
 // in meeting contacts phone number array
 #define INMEETINGCONTACTS_PHONENUMBERARRAY  [NSArray arrayWithObjects:@"13770662051", @"13382794516", @"18652096792", @"13813005146", nil]
 
+// MeetingContactsListView extension
+@interface MeetingContactsListView ()
+
+// remove prein meeting attendee action
+- (void)removePreinMeetingAttendeeAction:(UIButton *)pSender;
+
+@end
+
+
+
+
 @implementation MeetingContactsListView
 
 @synthesize inMeetingContactsInfoArrayRef = _inMeetingContactsInfoArrayRef;
@@ -52,6 +63,7 @@
         self.dataSource = self;
         self.delegate = self;
         
+        // set editing
         //self.editing = YES;
     }
     return self;
@@ -91,6 +103,8 @@
     cell.photoImg = (0 == indexPath.section) ? CONTACT_SELECTED_PHOTO : /*nil*/CONTACT_PREINMEETING_PHOTO;
     cell.displayName = _contactBean.displayName;
     cell.phoneNumbersArray = [NSArray arrayWithObject:_contactBean.selectedPhoneNumber ? _contactBean.selectedPhoneNumber : [_contactBean.phoneNumbers getContactPhoneNumbersDisplayTextWithStyle:horizontal]];
+    // add photo image button touchedDown event action
+    [cell addImgButtonTarget:self andActionSelector:@selector(removePreinMeetingAttendeeAction:)];
     
     return cell;
 }
@@ -132,6 +146,16 @@
 - (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView{
     // call parent view method:(void)hideSoftKeyboardWhenBeginScroll
     [((ContactsSelectContainerView *)self.superview) hideSoftKeyboardWhenBeginScroll];
+}
+
+- (void)removePreinMeetingAttendeeAction:(UIButton *)pSender{
+    // get select cell indexPath
+    NSIndexPath *_indexPath = [self indexPathForCell:(ContactsListTableViewCell *)pSender./*UITableViewCellContentView*/superview./*ContactsListTableViewCell*/superview];
+    
+    // check attendee is in prein meeting section
+    if (0 != _indexPath.section) {
+        [(ContactsSelectContainerView *)self.superview removeSelectedContactFromMeetingWithIndexPath:_indexPath];
+    }
 }
 
 @end

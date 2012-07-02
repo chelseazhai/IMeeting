@@ -19,7 +19,9 @@
 
 @interface ContactsListTableViewCell : UITableViewCell {
     // contact photo imageView
-    UIImageView *_mPhotoImgView;
+    //UIImageView *_mPhotoImgView;
+    // contact photo imageButton
+    UIButton *_mPhotoImgButton;
     // contact display name label
     UILabel *_mDisplayNameLabel;
     // contact phone numbers display label
@@ -32,6 +34,9 @@
 @property (nonatomic, retain) NSString *displayName;
 // contact phone numbers array
 @property (nonatomic, retain) NSArray *phoneNumbersArray;
+
+// add target/action for UIControlEventTouchDown event
+- (void)addImgButtonTarget:(id)pTarget andActionSelector:(SEL)pSelector;
 
 // get the height of the contacts list tableViewCell with contactBean object
 + (CGFloat)cellHeightWithContact:(ContactBean *)pContact;

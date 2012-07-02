@@ -33,13 +33,22 @@
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
         // init contentView subViews
+        /*
         // contact photo image view
         _mPhotoImgView = [[UIImageView alloc] initWithFrame:CGRectMake(MARGIN + PHOTOIMAGEVIEW_MARGIN, MARGIN + PHOTOIMAGEVIEW_MARGIN, PHOTOIMGVIEW_HEIGHT, PHOTOIMGVIEW_HEIGHT)];
         // add to content view
         [self.contentView addSubview:_mPhotoImgView];
+        */
+         
+        // contact photo image button
+        _mPhotoImgButton = [UIButton buttonWithType:UIButtonTypeCustom];
+        // set frame
+        _mPhotoImgButton.frame = CGRectMake(MARGIN + PHOTOIMAGEVIEW_MARGIN, MARGIN + PHOTOIMAGEVIEW_MARGIN, PHOTOIMGVIEW_HEIGHT, PHOTOIMGVIEW_HEIGHT);
+        // add to content view
+        [self.contentView addSubview:_mPhotoImgButton];
         
         // contact display name label
-        _mDisplayNameLabel = [[UILabel alloc] initWithFrame:CGRectMake(_mPhotoImgView.frame.origin.x + _mPhotoImgView.frame.size.width + PADDING + PHOTOIMAGEVIEW_MARGIN, MARGIN, self.frame.size.width / 2 - MARGIN - (_mPhotoImgView.frame.size.width + PADDING), DISPLAYNAMELABEL_HEIGHT)];
+        _mDisplayNameLabel = [[UILabel alloc] initWithFrame:CGRectMake(_mPhotoImgButton.frame.origin.x + _mPhotoImgButton.frame.size.width + PADDING + PHOTOIMAGEVIEW_MARGIN, MARGIN, self.frame.size.width / 2 - MARGIN - (_mPhotoImgButton.frame.size.width + PADDING), DISPLAYNAMELABEL_HEIGHT)];
         // set text font
         _mDisplayNameLabel.font = [UIFont boldSystemFontOfSize:18.0];
         // add to content view
@@ -70,22 +79,15 @@
     // check photo image
     if (photoImg) {
         // set photo image view image
-        _mPhotoImgView.image = photoImg;
+        //_mPhotoImgView.image = photoImg;
+        
+        [_mPhotoImgButton setImage:photoImg forState:UIControlStateNormal];
+        [_mPhotoImgButton setImage:photoImg forState:UIControlStateHighlighted];
     }
     else {
         // recover photo image view default photo image
-        //_mPhotoImgView.image = CONTACT_DEFAULT_PHOTO;
-        
-        /*
-        NSLog(@"nil photo image");
-        
-        // remove from content view
-        [_mPhotoImgView removeFromSuperview];
-        
-        // update contact display name label and contact phone numbers label frame
-        _mDisplayNameLabel.frame = CGRectMake(_mPhotoImgView.frame.origin.x, _mDisplayNameLabel.frame.origin.y, self.frame.size.width / 2 - MARGIN - PADDING, DISPLAYNAMELABEL_HEIGHT);
-        _mPhoneNumbersLabel.frame = CGRectMake(_mDisplayNameLabel.frame.origin.x, _mPhoneNumbersLabel.frame.origin.y, _mDisplayNameLabel.frame.size.width, PHONENUMBERSLABEL_DEFAULTHEIGHT);
-         */
+        [_mPhotoImgButton setImage:CONTACT_DEFAULT_PHOTO forState:UIControlStateNormal];
+        [_mPhotoImgButton setImage:CONTACT_DEFAULT_PHOTO forState:UIControlStateHighlighted];
     }
 }
 
@@ -109,6 +111,11 @@
     
     // set phone number label text
     _mPhoneNumbersLabel.text = [phoneNumbersArray getContactPhoneNumbersDisplayTextWithStyle:vertical];
+}
+
+- (void)addImgButtonTarget:(id)pTarget andActionSelector:(SEL)pSelector{
+    // add photo image button target and action selector
+    [_mPhotoImgButton addTarget:pTarget action:pSelector forControlEvents:UIControlEventTouchDown];
 }
 
 + (CGFloat)cellHeightWithContact:(ContactBean *)pContact{
