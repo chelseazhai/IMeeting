@@ -144,33 +144,42 @@
 }
 
 - (void)addContactToMeetingWithPhoneNumber:(NSString *)pPhoneNumber{
-    // has searched result
-    if ([_mABContactsListView.presentContactsInfoArrayRef count] > 0) {
-        // process each result
-        for (NSInteger _index = 0; _index < [_mABContactsListView.presentContactsInfoArrayRef count]; _index++) {
-            // add searched contact to meeting contacts list table view prein meeting section
-            if ([((ContactBean *)[_mABContactsListView.presentContactsInfoArrayRef objectAtIndex:_index]).phoneNumbers containsObject:pPhoneNumber] && ![_mMeetingContactsListView.preinMeetingContactsInfoArrayRef containsObject:[_mABContactsListView.presentContactsInfoArrayRef objectAtIndex:_index]]) {
-                [self addSelectedContactToMeetingWithIndexPath:[NSIndexPath indexPathForRow:_index inSection:0] andSelectedPhoneNumber:pPhoneNumber];
-            }
-            // the searched contact has been existed in meeting contacts list table view prein meeting section with another phone number
-            else if ([((ContactBean *)[_mABContactsListView.presentContactsInfoArrayRef objectAtIndex:_index]).phoneNumbers containsObject:pPhoneNumber]) {
-                NSLog(@"Error: has a contact with user input phone number has been existed in prein meeting");
-                
-                // show toast
-                [[iToast makeText:[NSString stringWithFormat:@"%@ %@", ((ContactBean *)[_mABContactsListView.presentContactsInfoArrayRef objectAtIndex:_index]).displayName, NSLocalizedString(@"contact with user input phone number has been existed in prein meeting", nil)]] show];
-            }
-            // add the user input phone number to meeting contacts list table view prein meeting section
-            else {
-                // generate contact with user input phone number and add to meeting contacts list table view prein meeting section
-                [self addNewContactToMeetingWithPhoneNumber:pPhoneNumber];
+    // check new added contact phone number
+    if (nil == pPhoneNumber || [pPhoneNumber isNil]) {
+        NSLog(@"Error: %@ - addContactToMeetingWithPhoneNumber - phone number is nil", NSStringFromClass(self.class));
+        
+        // show toast
+        [[iToast makeText:NSLocalizedString(@"new added phone number is nil", nil)] show];
+    }
+    else {
+        // has searched result
+        if ([_mABContactsListView.presentContactsInfoArrayRef count] > 0) {
+            // process each result
+            for (NSInteger _index = 0; _index < [_mABContactsListView.presentContactsInfoArrayRef count]; _index++) {
+                // add searched contact to meeting contacts list table view prein meeting section
+                if ([((ContactBean *)[_mABContactsListView.presentContactsInfoArrayRef objectAtIndex:_index]).phoneNumbers containsObject:pPhoneNumber] && ![_mMeetingContactsListView.preinMeetingContactsInfoArrayRef containsObject:[_mABContactsListView.presentContactsInfoArrayRef objectAtIndex:_index]]) {
+                    [self addSelectedContactToMeetingWithIndexPath:[NSIndexPath indexPathForRow:_index inSection:0] andSelectedPhoneNumber:pPhoneNumber];
+                }
+                // the searched contact has been existed in meeting contacts list table view prein meeting section with another phone number
+                else if ([((ContactBean *)[_mABContactsListView.presentContactsInfoArrayRef objectAtIndex:_index]).phoneNumbers containsObject:pPhoneNumber]) {
+                    NSLog(@"Error: has a contact with user input phone number has been existed in prein meeting");
+                    
+                    // show toast
+                    [[iToast makeText:[NSString stringWithFormat:@"%@ %@", ((ContactBean *)[_mABContactsListView.presentContactsInfoArrayRef objectAtIndex:_index]).displayName, NSLocalizedString(@"contact with user input phone number has been existed in prein meeting", nil)]] show];
+                }
+                // add the user input phone number to meeting contacts list table view prein meeting section
+                else {
+                    // generate contact with user input phone number and add to meeting contacts list table view prein meeting section
+                    [self addNewContactToMeetingWithPhoneNumber:pPhoneNumber];
+                }
             }
         }
-    }
-    // no result
-    else {
-        // add the user input phone number to meeting contacts list table view prein meeting section
-        // generate contact with user input phone number and add to meeting contacts list table view prein meeting section
-        [self addNewContactToMeetingWithPhoneNumber:pPhoneNumber];
+        // no result
+        else {
+            // add the user input phone number to meeting contacts list table view prein meeting section
+            // generate contact with user input phone number and add to meeting contacts list table view prein meeting section
+            [self addNewContactToMeetingWithPhoneNumber:pPhoneNumber];
+        }
     }
 }
 
@@ -240,23 +249,14 @@
 }
 
 - (void)addNewContactToMeetingWithPhoneNumber:(NSString *)pPhoneNumber{
-    // check new added contact phone number
-    if ([pPhoneNumber isNil]) {
-        NSLog(@"%@ - addNewContactToMeetingWithPhoneNumber - phone number is nil", NSStringFromClass(self.class));
-        
-        // show toast
-        [[iToast makeText:NSLocalizedString(@"new added phone number is nil", nil)] show];
-    }
-    else {
-        // generate contact with user input phone number and add to meeting contacts list table view prein meeting section
-        ContactBean *_newAddedContact = [[ContactBean alloc] init];
-        // set display name and phone number array
-        _newAddedContact.displayName = pPhoneNumber;
-        _newAddedContact.phoneNumbers = [NSArray arrayWithObject:pPhoneNumber];
-        
-        [_mMeetingContactsListView.preinMeetingContactsInfoArrayRef addObject:_newAddedContact];
-        [_mMeetingContactsListView insertRowAtIndexPath:[NSIndexPath indexPathForRow:[_mMeetingContactsListView.preinMeetingContactsInfoArrayRef count] - 1 inSection:_mMeetingContactsListView.numberOfSections - 1] withRowAnimation:UITableViewRowAnimationLeft];
-    }
+    // generate contact with user input phone number and add to meeting contacts list table view prein meeting section
+    ContactBean *_newAddedContact = [[ContactBean alloc] init];
+    // set display name and phone number array
+    _newAddedContact.displayName = pPhoneNumber;
+    _newAddedContact.phoneNumbers = [NSArray arrayWithObject:pPhoneNumber];
+    
+    [_mMeetingContactsListView.preinMeetingContactsInfoArrayRef addObject:_newAddedContact];
+    [_mMeetingContactsListView insertRowAtIndexPath:[NSIndexPath indexPathForRow:[_mMeetingContactsListView.preinMeetingContactsInfoArrayRef count] - 1 inSection:_mMeetingContactsListView.numberOfSections - 1] withRowAnimation:UITableViewRowAnimationLeft];
 }
 
 @end

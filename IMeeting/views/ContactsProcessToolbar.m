@@ -161,14 +161,14 @@
     // numeric
     if (indexPath.skb_row < 3 || (indexPath.skb_row == 3 && indexPath.skb_cell == 1)) {
         // set inputDiaplayLabel text for user input with custom softKeyboard
-        _mUserInputTextField.text = [NSString stringWithFormat:@"%@%@", !_mUserInputTextField.text ? @"" : _mUserInputTextField.text, _selectedCellFrontViewText];
+        _mUserInputTextField.text = [NSString stringWithFormat:@"%@%@", nil == _mUserInputTextField.text ? @"" : _mUserInputTextField.text, _selectedCellFrontViewText];
         // manual call method:(void)userInputTextDidChanged:
         [self userInputTextDidChanged:_mUserInputTextField];
     }
     // functionality
     else {
         if (indexPath.skb_row == 3 && indexPath.skb_cell == 0) {
-            // add
+            // add new contact with user input phone number to prein meeting section
             // call parent view method:(void)addContactToMeetingWithPhoneNumber:
             [((ContactsSelectContainerView *)self.superview) addContactToMeetingWithPhoneNumber:_mUserInputTextField.text];
         }
@@ -257,7 +257,7 @@
         switch (_mSoftKeyboardType) {
             case custom:
                 // save previous input text
-                [_mPreviousInputTextDic setObject:!_mUserInputTextField.text ? @"" : _mUserInputTextField.text forKey:[NSNumber numberWithInt:custom]];
+                [_mPreviousInputTextDic setObject:nil == _mUserInputTextField.text ? @"" : _mUserInputTextField.text forKey:[NSNumber numberWithInt:custom]];
                 
                 // update softKeyboard type
                 _mSoftKeyboardType = iosSystem;
@@ -273,7 +273,7 @@
                 
             case iosSystem:
                 // save previous input text
-                [_mPreviousInputTextDic setObject:!_mUserInputTextField.text ? @"" : _mUserInputTextField.text forKey:[NSNumber numberWithInt:iosSystem]];
+                [_mPreviousInputTextDic setObject:nil == _mUserInputTextField.text ? @"" : _mUserInputTextField.text forKey:[NSNumber numberWithInt:iosSystem]];
                 
                 // update softKeyboard type
                 _mSoftKeyboardType = custom;
