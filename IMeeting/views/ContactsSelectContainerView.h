@@ -26,6 +26,9 @@
 
 @property (nonatomic, readonly) NSMutableArray *preinMeetingContactsInfoArray;
 
+// init subview meeting contacts list table view in meeting contacts info array
+- (void)initInMeetingAttendeesPhoneNumbers:(NSArray *)pPhoneNumbers; 
+
 // add the selected contact with indexPath and selected phone number to meeting contacts list table view prein meeting section
 - (void)addSelectedContactToMeetingWithIndexPath:(NSIndexPath *)pIndexPath andSelectedPhoneNumber:(NSString *)pSelectedPhoneNumber;
 

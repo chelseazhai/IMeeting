@@ -15,4 +15,7 @@
 // prein meeting contacts info array reference
 @property (nonatomic, retain) NSMutableArray *preinMeetingContactsInfoArrayRef;
 
+// in meeting addtendees phone number array(set once, mustn't modify)
+@property (nonatomic, retain) NSMutableArray *inMeetingAttendeesPhoneNumberArray;
+
 @end

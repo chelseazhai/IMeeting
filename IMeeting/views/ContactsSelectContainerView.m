@@ -80,6 +80,11 @@
     return _mMeetingContactsListView.preinMeetingContactsInfoArrayRef;
 }
 
+- (void)initInMeetingAttendeesPhoneNumbers:(NSArray *)pPhoneNumbers{
+    // set meeting contacts list table view in meeting attedees phone number array
+    _mMeetingContactsListView.inMeetingAttendeesPhoneNumberArray = [NSMutableArray arrayWithArray:pPhoneNumbers];
+}
+
 - (void)addSelectedContactToMeetingWithIndexPath:(NSIndexPath *)pIndexPath andSelectedPhoneNumber:(NSString *)pSelectedPhoneNumber{
     // if the select contact not existed in meeting contacts list table view in meeting section
     if (![self.inMeetingContactsPhoneNumberArray containsObject:pSelectedPhoneNumber]) {

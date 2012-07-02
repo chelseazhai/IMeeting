@@ -11,7 +11,6 @@
 #import "ContactsListTableViewCell.h"
 
 #import "ContactsSelectContainerView.h"
-#import "ContactsSelectViewController.h"
 
 #import "ContactBean+IMeeting.h"
 
@@ -39,37 +38,41 @@
 @synthesize inMeetingContactsInfoArrayRef = _inMeetingContactsInfoArrayRef;
 @synthesize preinMeetingContactsInfoArrayRef = _preinMeetingContactsInfoArrayRef;
 
+@synthesize inMeetingAttendeesPhoneNumberArray = _inMeetingAttendeesPhoneNumberArray;
+
 - (id)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
     if (self) {
-        // create in meeting contacts info array
-        NSMutableArray *_inMeetingContactsInfoArray = [[NSMutableArray alloc] init];
-        
-        // get all in meeting attendees phone number array from server
-        NSArray *_allInMeetingAttendeePhoneNumberArrayFromServer = [ContactsSelectViewController allInMeetingAttendeesPhoneNumberArrayFromServer];
-        
-        // init in meeting contacts info array
-        for (NSInteger _index = 0; _index < [_allInMeetingAttendeePhoneNumberArrayFromServer count]; _index++) {
-            ContactBean *_contactBean = [[ContactBean alloc] init];
-            _contactBean.displayName = [[[AddressBookManager shareAddressBookManager] contactsDisplayNameArrayWithPhoneNumber:[_allInMeetingAttendeePhoneNumberArrayFromServer objectAtIndex:_index]] objectAtIndex:0];
-            _contactBean.phoneNumbers = [NSArray arrayWithObject:[_allInMeetingAttendeePhoneNumberArrayFromServer objectAtIndex:_index]];
-            
-            [_inMeetingContactsInfoArray addObject:_contactBean];
-        }
-        
         // init in meeting contacts info array from server and prein meeting contacts info array
-        _inMeetingContactsInfoArrayRef = _inMeetingContactsInfoArray;
+        _inMeetingContactsInfoArrayRef = [[NSArray alloc] init];
         _preinMeetingContactsInfoArrayRef = [[NSMutableArray alloc] init];
         
         // set table view dataSource and delegate
         self.dataSource = self;
         self.delegate = self;
-        
-        // set editing
-        //self.editing = YES;
     }
     return self;
+}
+
+- (void)setInMeetingAttendeesPhoneNumberArray:(NSMutableArray *)inMeetingAttendeesPhoneNumberArray{
+    // create in meeting contacts info array
+    NSMutableArray *_inMeetingContactsInfoArray = [[NSMutableArray alloc] init];
+    
+    // init in meeting contacts info array
+    for (NSInteger _index = 0; _index < [inMeetingAttendeesPhoneNumberArray count]; _index++) {
+        ContactBean *_contactBean = [[ContactBean alloc] init];
+        _contactBean.displayName = [[[AddressBookManager shareAddressBookManager] contactsDisplayNameArrayWithPhoneNumber:[inMeetingAttendeesPhoneNumberArray objectAtIndex:_index]] objectAtIndex:0];
+        _contactBean.phoneNumbers = [NSArray arrayWithObject:[inMeetingAttendeesPhoneNumberArray objectAtIndex:_index]];
+        
+        [_inMeetingContactsInfoArray addObject:_contactBean];
+    }
+    
+    // init in meeting contacts info array from server and prein meeting contacts info array
+    _inMeetingContactsInfoArrayRef = _inMeetingContactsInfoArray;
+    
+    // meeting contacts list table view reload data
+    [self reloadData];
 }
 
 /*

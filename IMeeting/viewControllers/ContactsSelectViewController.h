@@ -10,7 +10,7 @@
 
 @interface ContactsSelectViewController : UIViewController
 
-// get all in meeting addendees phone number array from server
-+ (NSArray *)allInMeetingAttendeesPhoneNumberArrayFromServer;
+// init in meeting contacts list table view in meeting contacts info array
+- (void)initInMeetingAttendeesPhoneNumbers:(NSArray *)pPhoneNumbers;
 
 @end
