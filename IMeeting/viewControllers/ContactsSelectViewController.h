@@ -10,4 +10,7 @@
 
 @interface ContactsSelectViewController : UIViewController
 
+// get all in meeting addtendee phone number array from server
++ (NSArray *)allInMeetingAttendeePhoneNumberArrayFromServer;
+
 @end

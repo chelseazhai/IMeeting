@@ -53,4 +53,8 @@
 	return YES;
 }
 
++ (NSArray *)allInMeetingAttendeePhoneNumberArrayFromServer{
+    return [NSArray arrayWithObjects:@"13770662051", @"13382794516", @"18652096792", @"13813005146", @"14751802319", nil];
+}
+
 @end

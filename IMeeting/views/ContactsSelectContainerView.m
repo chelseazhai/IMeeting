@@ -249,9 +249,23 @@
 }
 
 - (void)addNewContactToMeetingWithPhoneNumber:(NSString *)pPhoneNumber{
+    // compare with all tempelate contacts phone number which in meeting contacts list table in meeting section
+    for (ContactBean *_tempContact in _mMeetingContactsListView.preinMeetingContactsInfoArrayRef) {
+        if (-1 == _tempContact.id && [pPhoneNumber isEqualToString:[_tempContact.phoneNumbers objectAtIndex:0]]) {
+            NSLog(@"new added contact with the phone number has added in meeting contacts list table view in meeting section");
+            
+            // show toast
+            [[iToast makeText:NSLocalizedString(@"new added contact with user input phone number has been existed in prein meeting", nil)] show];
+            
+            // return immediately
+            return;
+        }
+    }
+    
     // generate contact with user input phone number and add to meeting contacts list table view prein meeting section
     ContactBean *_newAddedContact = [[ContactBean alloc] init];
-    // set display name and phone number array
+    // set id, display name and phone number array
+    _newAddedContact.id = -1/*tempelate contact*/;
     _newAddedContact.displayName = pPhoneNumber;
     _newAddedContact.phoneNumbers = [NSArray arrayWithObject:pPhoneNumber];
     

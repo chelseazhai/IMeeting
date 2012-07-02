@@ -11,6 +11,7 @@
 #import "ContactsListTableViewCell.h"
 
 #import "ContactsSelectContainerView.h"
+#import "ContactsSelectViewController.h"
 
 #import "ContactBean+IMeeting.h"
 
@@ -45,12 +46,17 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
-        // create and init in meeting contacts info array
+        // create in meeting contacts info array
         NSMutableArray *_inMeetingContactsInfoArray = [[NSMutableArray alloc] init];
-        for (NSInteger _index = 0; _index < [INMEETINGCONTACTS_PHONENUMBERARRAY count]; _index++) {
+        
+        // get all in meeting attendee phone number array from server
+        NSArray *_allInMeetingAttendeePhoneNumberArrayFromServer = [ContactsSelectViewController allInMeetingAttendeePhoneNumberArrayFromServer];
+        
+        // init in meeting contacts info array
+        for (NSInteger _index = 0; _index < [_allInMeetingAttendeePhoneNumberArrayFromServer count]; _index++) {
             ContactBean *_contactBean = [[ContactBean alloc] init];
-            _contactBean.displayName = [[[AddressBookManager shareAddressBookManager] contactsDisplayNameArrayWithPhoneNumber:[INMEETINGCONTACTS_PHONENUMBERARRAY objectAtIndex:_index]] objectAtIndex:0];
-            _contactBean.phoneNumbers = [NSArray arrayWithObject:[INMEETINGCONTACTS_PHONENUMBERARRAY objectAtIndex:_index]];
+            _contactBean.displayName = [[[AddressBookManager shareAddressBookManager] contactsDisplayNameArrayWithPhoneNumber:[_allInMeetingAttendeePhoneNumberArrayFromServer objectAtIndex:_index]] objectAtIndex:0];
+            _contactBean.phoneNumbers = [NSArray arrayWithObject:[_allInMeetingAttendeePhoneNumberArrayFromServer objectAtIndex:_index]];
             
             [_inMeetingContactsInfoArray addObject:_contactBean];
         }
