@@ -46,7 +46,7 @@
         // create in meeting contacts info array
         NSMutableArray *_inMeetingContactsInfoArray = [[NSMutableArray alloc] init];
         
-        // get all in meeting attendee phone number array from server
+        // get all in meeting attendees phone number array from server
         NSArray *_allInMeetingAttendeePhoneNumberArrayFromServer = [ContactsSelectViewController allInMeetingAttendeesPhoneNumberArrayFromServer];
         
         // init in meeting contacts info array
