@@ -18,8 +18,6 @@
 #define CONTACT_PREINMEETING_PHOTO [UIImage imageNamed:@"ContactPreinMeeting.png"]
 
 @interface ContactsListTableViewCell : UITableViewCell {
-    // contact photo imageView
-    //UIImageView *_mPhotoImgView;
     // contact photo imageButton
     UIButton *_mPhotoImgButton;
     // contact display name label

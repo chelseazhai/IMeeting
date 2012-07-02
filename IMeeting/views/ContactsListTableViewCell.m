@@ -33,13 +33,6 @@
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
         // init contentView subViews
-        /*
-        // contact photo image view
-        _mPhotoImgView = [[UIImageView alloc] initWithFrame:CGRectMake(MARGIN + PHOTOIMAGEVIEW_MARGIN, MARGIN + PHOTOIMAGEVIEW_MARGIN, PHOTOIMGVIEW_HEIGHT, PHOTOIMGVIEW_HEIGHT)];
-        // add to content view
-        [self.contentView addSubview:_mPhotoImgView];
-        */
-         
         // contact photo image button
         _mPhotoImgButton = [UIButton buttonWithType:UIButtonTypeCustom];
         // set frame
@@ -79,8 +72,6 @@
     // check photo image
     if (photoImg) {
         // set photo image view image
-        //_mPhotoImgView.image = photoImg;
-        
         [_mPhotoImgButton setImage:photoImg forState:UIControlStateNormal];
         [_mPhotoImgButton setImage:photoImg forState:UIControlStateHighlighted];
     }
