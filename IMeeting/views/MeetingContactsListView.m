@@ -23,9 +23,6 @@
 // contacts info array in meeting contacts list table view
 #define CONTACTSINFOARRAY_INVIEW [NSArray arrayWithObjects:_inMeetingContactsInfoArrayRef, _preinMeetingContactsInfoArrayRef, nil]
 
-// in meeting contacts phone number array
-#define INMEETINGCONTACTS_PHONENUMBERARRAY  [NSArray arrayWithObjects:@"13770662051", @"13382794516", @"18652096792", @"13813005146", nil]
-
 // MeetingContactsListView extension
 @interface MeetingContactsListView ()
 
