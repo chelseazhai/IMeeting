@@ -171,7 +171,7 @@
     // get select cell indexPath
     NSIndexPath *_indexPath = [self indexPathForCell:(ContactsListTableViewCell *)pSender./*UITableViewCellContentView*/superview./*ContactsListTableViewCell*/superview];
     
-    // check attendee is in prein meeting section
+    // check the contact is in prein meeting section
     if (0 != _indexPath.section) {
         [(ContactsSelectContainerView *)self.superview removeSelectedContactFromMeetingWithIndexPath:_indexPath];
     }
