@@ -36,6 +36,7 @@
 		DCC036A3159C6E7900D19A26 /* Pinyin4jBundle.bundle in Resources */ = {isa = PBXBuildFile; fileRef = DCC036A1159C6E7900D19A26 /* Pinyin4jBundle.bundle */; };
 		DCE9BEA415A2A8B20077AAD7 /* MeetingDetailInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DCE9BEA315A2A8B20077AAD7 /* MeetingDetailInfoViewController.m */; };
 		DCE9BEA715A2A8D30077AAD7 /* MeetingDetailInfoView.m in Sources */ = {isa = PBXBuildFile; fileRef = DCE9BEA615A2A8D30077AAD7 /* MeetingDetailInfoView.m */; };
+		DCE9BEC315A2E0C70077AAD7 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DCE9BEC215A2E0C70077AAD7 /* MessageUI.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -86,6 +87,7 @@
 		DCE9BEA315A2A8B20077AAD7 /* MeetingDetailInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MeetingDetailInfoViewController.m; path = viewControllers/MeetingDetailInfoViewController.m; sourceTree = "<group>"; };
 		DCE9BEA515A2A8D30077AAD7 /* MeetingDetailInfoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MeetingDetailInfoView.h; path = views/MeetingDetailInfoView.h; sourceTree = "<group>"; };
 		DCE9BEA615A2A8D30077AAD7 /* MeetingDetailInfoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MeetingDetailInfoView.m; path = views/MeetingDetailInfoView.m; sourceTree = "<group>"; };
+		DCE9BEC215A2E0C70077AAD7 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -95,6 +97,7 @@
 			files = (
 				DCC03642159C43E700D19A26 /* libicucore.dylib in Frameworks */,
 				DCBBB3C8158A3DB5007C2301 /* libz.dylib in Frameworks */,
+				DCE9BEC315A2E0C70077AAD7 /* MessageUI.framework in Frameworks */,
 				DCBBB3C6158A3DB1007C2301 /* SystemConfiguration.framework in Frameworks */,
 				DCBBB3C4158A3DAD007C2301 /* MobileCoreServices.framework in Frameworks */,
 				DCBBB3C2158A3DA8007C2301 /* CFNetwork.framework in Frameworks */,
@@ -131,6 +134,7 @@
 			children = (
 				DCC03641159C43E700D19A26 /* libicucore.dylib */,
 				DCBBB3C7158A3DB5007C2301 /* libz.dylib */,
+				DCE9BEC215A2E0C70077AAD7 /* MessageUI.framework */,
 				DCBBB3C5158A3DB1007C2301 /* SystemConfiguration.framework */,
 				DCBBB3C3158A3DAD007C2301 /* MobileCoreServices.framework */,
 				DCBBB3C1158A3DA8007C2301 /* CFNetwork.framework */,
