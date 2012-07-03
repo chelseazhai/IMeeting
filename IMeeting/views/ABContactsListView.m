@@ -17,6 +17,9 @@
 // ContactsListTableView extension
 @interface ABContactsListView ()
 
+// add contact for joining meeting action
+- (void)addContactForJoiningMeetingAction:(UIButton *)pSender;
+
 // phone numbers select action sheet button clicked event selector
 - (void)phoneNumbersSelectActionSheet:(UIActionSheet *)pActionSheet clickedButtonAtIndex:(NSInteger)pButtonIndex;
 
@@ -27,16 +30,16 @@
 
 @implementation ABContactsListView
 
-@synthesize allContactsInfoArrayInABRef = _allContactsInfoArrayInABRef;
+@synthesize allContactsInfoArrayInABRef = _mAllContactsInfoArrayInABRef;
 
-@synthesize presentContactsInfoArrayRef = _presentContactsInfoArrayRef;
+@synthesize presentContactsInfoArrayRef = _mPresentContactsInfoArrayRef;
 
 - (id)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
     if (self) {
         // get all contacts info array from addressBook
-        _allContactsInfoArrayInABRef = _presentContactsInfoArrayRef = [AddressBookManager shareAddressBookManager].allContactsInfoArray;
+        _mAllContactsInfoArrayInABRef = _mPresentContactsInfoArrayRef = [AddressBookManager shareAddressBookManager].allContactsInfoArray;
         
         // set table view dataSource and delegate
         self.dataSource = self;
@@ -56,7 +59,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     // Return the number of rows in the section.
-    return [_presentContactsInfoArrayRef count];
+    return [_mPresentContactsInfoArrayRef count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -69,11 +72,13 @@
     
     // Configure the cell...
     // get contact bean 
-    ContactBean *_contactBean = [_presentContactsInfoArrayRef objectAtIndex:indexPath.row];
+    ContactBean *_contactBean = [_mPresentContactsInfoArrayRef objectAtIndex:indexPath.row];
     
     cell.photoImg = _contactBean.selectStatusImg ? _contactBean.selectStatusImg : CONTACT_DEFAULT_PHOTO;
     cell.displayName = _contactBean.displayName;
     cell.phoneNumbersArray = _contactBean.phoneNumbers;
+    // add photo image button touchedDown event action
+    [cell addImgButtonTarget:self andActionSelector:@selector(addContactForJoiningMeetingAction:)];
     
     return cell;
 }
@@ -85,22 +90,25 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     // Return the height for row at the indexPath.
-    return [ContactsListTableViewCell cellHeightWithContact:[_presentContactsInfoArrayRef objectAtIndex:indexPath.row]];
+    return [ContactsListTableViewCell cellHeightWithContact:[_mPresentContactsInfoArrayRef objectAtIndex:indexPath.row]];
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    // set selected cell indexPath
+    _mSelectedCellIndexPath = indexPath;
+    
     // get parent view: contacts select container view
     ContactsSelectContainerView *_contactsSelectContainerView = (ContactsSelectContainerView *)self.superview;
     
     // get the select contact contactBean
-    ContactBean *_selectContactBean = [_presentContactsInfoArrayRef objectAtIndex:indexPath.row];
+    ContactBean *_selectContactBean = [_mPresentContactsInfoArrayRef objectAtIndex:indexPath.row];
     
     // if the select contact not existed in meeting contacts list table view pre in meeting section
-    if (![_contactsSelectContainerView.preinMeetingContactsInfoArray containsObject:[_presentContactsInfoArrayRef objectAtIndex:indexPath.row]]) {
+    if (![_contactsSelectContainerView.preinMeetingContactsInfoArray containsObject:[_mPresentContactsInfoArrayRef objectAtIndex:indexPath.row]]) {
         // check select contact phone number array
         if (!_selectContactBean.phoneNumbers || 0 == [_selectContactBean.phoneNumbers count]) {
             // show contact has no phone number alertView
-            [[[UIAlertView alloc] initWithTitle:NSLocalizedString(@"contact has no phone number alertView title", nil) message:((ContactBean *)[_presentContactsInfoArrayRef objectAtIndex:indexPath.row]).displayName delegate:nil cancelButtonTitle:nil otherButtonTitles:NSLocalizedString(@"contact has no phone number alertView button title", nil), nil] show];
+            [[[UIAlertView alloc] initWithTitle:NSLocalizedString(@"contact has no phone number alertView title", nil) message:((ContactBean *)[_mPresentContactsInfoArrayRef objectAtIndex:indexPath.row]).displayName delegate:nil cancelButtonTitle:nil otherButtonTitles:NSLocalizedString(@"contact has no phone number alertView button title", nil), nil] show];
         }
         else if (_selectContactBean.phoneNumbers && 1 == [_selectContactBean.phoneNumbers count]) {
             // add the selected contact with selected phone number to meeting contacts list table view prein meeting section
@@ -124,7 +132,7 @@
         // traverse prein meeting section all contacts
         for (NSInteger _index = 0; _index < [_contactsSelectContainerView.preinMeetingContactsInfoArray count]; _index++) {
             // compare contact id in present contacts info array with each contact which in meeting contacts list table view prein meeting contacts info array
-            if (((ContactBean *)[_contactsSelectContainerView.preinMeetingContactsInfoArray objectAtIndex:_index]).id == ((ContactBean *)[_presentContactsInfoArrayRef objectAtIndex:indexPath.row]).id) {
+            if (((ContactBean *)[_contactsSelectContainerView.preinMeetingContactsInfoArray objectAtIndex:_index]).id == ((ContactBean *)[_mPresentContactsInfoArrayRef objectAtIndex:indexPath.row]).id) {
                 // remove the selected contact from meeting contacts list table view prein meeting sextion
                 [(ContactsSelectContainerView *)self.superview removeSelectedContactFromMeetingWithIndexPath:[NSIndexPath indexPathForRow:_index inSection:1]];
             }
@@ -137,9 +145,14 @@
     [((ContactsSelectContainerView *)self.superview) hideSoftKeyboardWhenBeginScroll];
 }
 
+- (void)addContactForJoiningMeetingAction:(UIButton *)pSender{
+    // call self tableView method:(void)tableView: didSelectRowAtIndexPath:
+    [self tableView:self didSelectRowAtIndexPath:[self indexPathForCell:(ContactsListTableViewCell *)pSender./*UITableViewCellContentView*/superview./*ContactsListTableViewCell*/superview]];
+}
+
 - (void)phoneNumbersSelectActionSheet:(UIActionSheet *)pActionSheet clickedButtonAtIndex:(NSInteger)pButtonIndex{
     // add the selected contact with selected phone number to meeting contacts list table view prein meeting section
-    [(ContactsSelectContainerView *)self.superview addSelectedContactToMeetingWithIndexPath:[self indexPathForSelectedRow] andSelectedPhoneNumber:[pActionSheet buttonTitleAtIndex:pButtonIndex]];
+    [(ContactsSelectContainerView *)self.superview addSelectedContactToMeetingWithIndexPath:_mSelectedCellIndexPath andSelectedPhoneNumber:[pActionSheet buttonTitleAtIndex:pButtonIndex]];
 }
 
 @end

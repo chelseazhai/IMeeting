@@ -8,12 +8,19 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ABContactsListView : UITableView <UITableViewDataSource, UITableViewDelegate>
+@interface ABContactsListView : UITableView <UITableViewDataSource, UITableViewDelegate> {
+    // all contacts info array in addressBook reference
+    NSArray *_mAllContactsInfoArrayInABRef;
+    
+    // present contacts info array reference
+    NSMutableArray *_mPresentContactsInfoArrayRef;
+    
+    // selected cell indexPath
+    NSIndexPath *_mSelectedCellIndexPath;
+}
 
-// all contacts info array in addressBook reference
 @property (nonatomic, readonly) NSArray *allContactsInfoArrayInABRef;
 
-// present contacts info array reference
 @property (nonatomic, retain) NSMutableArray *presentContactsInfoArrayRef;
 
 @end

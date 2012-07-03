@@ -25,8 +25,8 @@
 // MeetingContactsListView extension
 @interface MeetingContactsListView ()
 
-// remove prein meeting attendee action
-- (void)removePreinMeetingAttendeeAction:(UIButton *)pSender;
+// remove prein meeting contact action
+- (void)removePreinMeetingContactAction:(UIButton *)pSender;
 
 @end
 
@@ -113,7 +113,7 @@
     cell.displayName = _contactBean.displayName;
     cell.phoneNumbersArray = [NSArray arrayWithObject:_contactBean.selectedPhoneNumber];
     // add photo image button touchedDown event action
-    [cell addImgButtonTarget:self andActionSelector:@selector(removePreinMeetingAttendeeAction:)];
+    [cell addImgButtonTarget:self andActionSelector:@selector(removePreinMeetingContactAction:)];
     
     return cell;
 }
@@ -167,7 +167,7 @@
     return _ret;
 }
 
-- (void)removePreinMeetingAttendeeAction:(UIButton *)pSender{
+- (void)removePreinMeetingContactAction:(UIButton *)pSender{
     // get select cell indexPath
     NSIndexPath *_indexPath = [self indexPathForCell:(ContactsListTableViewCell *)pSender./*UITableViewCellContentView*/superview./*ContactsListTableViewCell*/superview];
     
