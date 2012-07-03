@@ -34,6 +34,8 @@
 		DCC0365D159C58C200D19A26 /* ContactsProcessSoftKeyboard.m in Sources */ = {isa = PBXBuildFile; fileRef = DCC0365C159C58C200D19A26 /* ContactsProcessSoftKeyboard.m */; };
 		DCC036A2159C6E7900D19A26 /* CommonToolkitBundle.bundle in Resources */ = {isa = PBXBuildFile; fileRef = DCC036A0159C6E7900D19A26 /* CommonToolkitBundle.bundle */; };
 		DCC036A3159C6E7900D19A26 /* Pinyin4jBundle.bundle in Resources */ = {isa = PBXBuildFile; fileRef = DCC036A1159C6E7900D19A26 /* Pinyin4jBundle.bundle */; };
+		DCE9BEA415A2A8B20077AAD7 /* MeetingDetailInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DCE9BEA315A2A8B20077AAD7 /* MeetingDetailInfoViewController.m */; };
+		DCE9BEA715A2A8D30077AAD7 /* MeetingDetailInfoView.m in Sources */ = {isa = PBXBuildFile; fileRef = DCE9BEA615A2A8D30077AAD7 /* MeetingDetailInfoView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -80,6 +82,10 @@
 		DCC0365C159C58C200D19A26 /* ContactsProcessSoftKeyboard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ContactsProcessSoftKeyboard.m; path = views/ContactsProcessSoftKeyboard.m; sourceTree = "<group>"; };
 		DCC036A0159C6E7900D19A26 /* CommonToolkitBundle.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = CommonToolkitBundle.bundle; sourceTree = "<group>"; };
 		DCC036A1159C6E7900D19A26 /* Pinyin4jBundle.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Pinyin4jBundle.bundle; sourceTree = "<group>"; };
+		DCE9BEA215A2A8B20077AAD7 /* MeetingDetailInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MeetingDetailInfoViewController.h; path = viewControllers/MeetingDetailInfoViewController.h; sourceTree = "<group>"; };
+		DCE9BEA315A2A8B20077AAD7 /* MeetingDetailInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MeetingDetailInfoViewController.m; path = viewControllers/MeetingDetailInfoViewController.m; sourceTree = "<group>"; };
+		DCE9BEA515A2A8D30077AAD7 /* MeetingDetailInfoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MeetingDetailInfoView.h; path = views/MeetingDetailInfoView.h; sourceTree = "<group>"; };
+		DCE9BEA615A2A8D30077AAD7 /* MeetingDetailInfoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MeetingDetailInfoView.m; path = views/MeetingDetailInfoView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -219,6 +225,7 @@
 		DCBBB3D9158A3E4B007C2301 /* Meeting */ = {
 			isa = PBXGroup;
 			children = (
+				DCE9BEA015A2A8760077AAD7 /* MeetingDetailInfo */,
 			);
 			name = Meeting;
 			sourceTree = "<group>";
@@ -308,6 +315,17 @@
 			path = Bundles;
 			sourceTree = "<group>";
 		};
+		DCE9BEA015A2A8760077AAD7 /* MeetingDetailInfo */ = {
+			isa = PBXGroup;
+			children = (
+				DCE9BEA215A2A8B20077AAD7 /* MeetingDetailInfoViewController.h */,
+				DCE9BEA315A2A8B20077AAD7 /* MeetingDetailInfoViewController.m */,
+				DCE9BEA515A2A8D30077AAD7 /* MeetingDetailInfoView.h */,
+				DCE9BEA615A2A8D30077AAD7 /* MeetingDetailInfoView.m */,
+			);
+			name = MeetingDetailInfo;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -388,6 +406,8 @@
 				DCBBB3F6158A4DCF007C2301 /* ContactBean+IMeeting.m in Sources */,
 				DCC0365A159C58A400D19A26 /* ContactsProcessToolbar.m in Sources */,
 				DCC0365D159C58C200D19A26 /* ContactsProcessSoftKeyboard.m in Sources */,
+				DCE9BEA415A2A8B20077AAD7 /* MeetingDetailInfoViewController.m in Sources */,
+				DCE9BEA715A2A8D30077AAD7 /* MeetingDetailInfoView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

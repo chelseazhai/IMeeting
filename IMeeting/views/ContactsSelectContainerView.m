@@ -28,6 +28,9 @@
 // add new contact with user input phone number to meeting contacts list table view prein meeting section
 - (void)addNewContactToMeetingWithPhoneNumber:(NSString *)pPhoneNumber;
 
+// invite new added contacts to meeting
+- (void)inviteNewAddedContactsToMeeting;
+
 @end
 
 
@@ -44,6 +47,9 @@
         
         // set title
         self.title = NSLocalizedString(@"contacts select view title", nil);
+        
+        // set right bar button item
+        self.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"invite new added contacts to meeting", nil) style:UIBarButtonItemStyleDone target:self action:@selector(inviteNewAddedContactsToMeeting)];
         
         // get UIScreen bounds
         CGRect _screenBounds = [[UIScreen mainScreen] bounds];
@@ -272,13 +278,20 @@
     
     // generate contact with user input phone number and add to meeting contacts list table view prein meeting section
     ContactBean *_newAddedContact = [[ContactBean alloc] init];
-    // set id, display name and phone number array
+    // set his id, display name, selected phone number and phone number array
     _newAddedContact.id = -1/*tempelate contact*/;
     _newAddedContact.displayName = pPhoneNumber;
+    _newAddedContact.selectedPhoneNumber = pPhoneNumber;
     _newAddedContact.phoneNumbers = [NSArray arrayWithObject:pPhoneNumber];
     
     [_mMeetingContactsListView.preinMeetingContactsInfoArrayRef addObject:_newAddedContact];
     [_mMeetingContactsListView insertRowAtIndexPath:[NSIndexPath indexPathForRow:[_mMeetingContactsListView.preinMeetingContactsInfoArrayRef count] - 1 inSection:_mMeetingContactsListView.numberOfSections - 1] withRowAnimation:UITableViewRowAnimationLeft];
+}
+
+- (void)inviteNewAddedContactsToMeeting{
+    if ([self validateViewControllerRef:self.viewControllerRef andSelector:@selector(inviteNewAddedContactsToMeeting:)]) {
+        [self.viewControllerRef performSelector:@selector(inviteNewAddedContactsToMeeting:) withObject:_mMeetingContactsListView.preparedForJoiningMeetingContactsPhoneNumberArray];
+    }
 }
 
 @end

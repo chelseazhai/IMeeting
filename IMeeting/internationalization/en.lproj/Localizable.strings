@@ -6,8 +6,13 @@
   Copyright (c) 2012年 richitec. All rights reserved.
 */
 
+// meeting section
+"meeting detail info view title" = "Meeting detailInfo";
+"add new meeting attendee" = "Add new attendee";
+
 // contacts section
 "contacts select view title" = "Select conference attendee";
+"invite new added contacts to meeting" = "Invite to meeting";
 "contacts list table view section header title" = "From addressBook";
 "meeting contacts table view in meeting section header title" = "In conference";
 "meeting contacts table view prein meeting section header title" = "Prepare for join conference";
@@ -19,4 +24,4 @@
 "contact has been in meeting" = "existed in meeting";
 "contact with user input phone number has been existed in prein meeting" = "use the phone number prepare for joining meeting";
 "new added phone number is nil" = "Rejected, new added phone number is nil";
-"new added contact with user input phone number has been existed in prein meeting" = "existed new added attendee with the phone number prepare for joining meeting";
+"new added contact with user input phone number has been existed in prein meeting" = "Existed new added attendee with the phone number prepare for joining meeting";

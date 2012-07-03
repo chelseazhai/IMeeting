@@ -10,7 +10,7 @@
 
 #import "CommonToolkit/CommonToolkit.h"
 
-#import "ContactsSelectViewController.h"
+#import "MeetingDetailInfoViewController.h"
 
 @implementation AppDelegate
 
@@ -27,7 +27,7 @@
     [[AddressBookManager shareAddressBookManager] traversalAddressBook];
     
     // init application root view controller
-    self.appRootViewController = [[AppRootViewController alloc] initWithPresentViewController:[[ContactsSelectViewController alloc] init] andMode:navigationController];
+    self.appRootViewController = [[AppRootViewController alloc] initWithPresentViewController:[[MeetingDetailInfoViewController alloc] init] andMode:navigationController];
     
     // set application window rootViewController and show the main window
     self.window.rootViewController = self.appRootViewController;

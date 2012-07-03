@@ -6,8 +6,13 @@
   Copyright (c) 2012年 richitec. All rights reserved.
 */
 
+// meeting section
+"meeting detail info view title" = "会议详情";
+"add new meeting attendee" = "添加会议参与者";
+
 // contacts section
 "contacts select view title" = "选择参会者";
+"invite new added contacts to meeting" = "邀请加入会议";
 "contacts list table view section header title" = "来自通信录的";
 "meeting contacts table view in meeting section header title" = "在会议中的";
 "meeting contacts table view prein meeting section header title" = "准备加入会议的";

@@ -18,4 +18,7 @@
 // in meeting addtendees phone number array(set once, mustn't modify)
 @property (nonatomic, retain) NSMutableArray *inMeetingAttendeesPhoneNumberArray;
 
+// prepared for joining meeting contacts phone number array
+- (NSArray *)preparedForJoiningMeetingContactsPhoneNumberArray;
+
 @end
