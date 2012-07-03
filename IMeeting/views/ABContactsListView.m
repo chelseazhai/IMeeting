@@ -96,6 +96,8 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     // set selected cell indexPath
     _mSelectedCellIndexPath = indexPath;
+    // set selected row at indexPath select style
+    [self selectRowAtIndexPath:indexPath animated:NO scrollPosition:UITableViewScrollPositionNone];
     
     // get parent view: contacts select container view
     ContactsSelectContainerView *_contactsSelectContainerView = (ContactsSelectContainerView *)self.superview;
