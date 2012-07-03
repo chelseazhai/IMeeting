@@ -8,7 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ContactsSelectViewController : UIViewController
+#import <MessageUI/MessageUI.h>
+
+@interface ContactsSelectViewController : UIViewController <MFMessageComposeViewControllerDelegate>
 
 // init in meeting contacts list table view in meeting contacts info array
 - (void)initInMeetingAttendeesPhoneNumbers:(NSArray *)pPhoneNumbers;

@@ -56,17 +56,53 @@
 	return YES;
 }
 
+// MFMessageComposeViewControllerDelegate methods implemetation
+- (void)messageComposeViewController:(MFMessageComposeViewController *)controller didFinishWithResult:(MessageComposeResult)result{
+    // check message compose result
+    switch (result) {
+        case MessageComposeResultSent:
+            // dismiss message compose view controller
+            [self dismissModalViewControllerAnimated:YES];
+            
+            // popup contacts select view controller to meeting detailInfo view controller
+            [self.navigationController popViewControllerAnimated:YES];
+            break;
+            
+        case MessageComposeResultFailed:
+            // show send short message failed toast
+            [[iToast makeText:NSLocalizedString(@"send short message failed", nil)] show];
+            break;
+        
+        case MessageComposeResultCancelled:
+        default:
+            // dismiss message compose view controller
+            [self dismissModalViewControllerAnimated:YES];
+            break;
+    }
+}
+
 - (void)initInMeetingAttendeesPhoneNumbers:(NSArray *)pPhoneNumbers{
     [((ContactsSelectContainerView *)self.view) initInMeetingAttendeesPhoneNumbers:pPhoneNumbers];
 }
 
 - (void)inviteNewAddedContactsToMeeting:(NSArray *)pPhoneNumbers{
-    NSLog(@"invite new added contacts to meeting - phone number array = %@", pPhoneNumbers);
-    
-    // show toast, test by ares
-    iToast *_iToast = [iToast makeText:[NSString stringWithFormat:@"将加入会议的号码为：%@", [pPhoneNumbers getContactPhoneNumbersDisplayTextWithStyle:horizontal]]];
-    [_iToast setDuration:iToastDurationLongLong];
-    [_iToast show];
+    // check device short sessage service
+    if([MFMessageComposeViewController canSendText]){        
+        // init message compose view controller
+        MFMessageComposeViewController *_smsViewController = [[MFMessageComposeViewController alloc] init];
+        
+        // set recipients, body and message compose delegate
+        _smsViewController.recipients = pPhoneNumbers;
+        _smsViewController.body = [NSString stringWithFormat:NSLocalizedString(@"invite contacts message body", nil), /*meeting moderator name*/@"Ares", /*meeting number*/rand()];
+        _smsViewController.messageComposeDelegate = self;
+        
+        // show message compose view controller
+        [self presentModalViewController:_smsViewController animated:YES];
+    }
+    else{
+        // show the device can't send message toast
+        [[iToast makeText:NSLocalizedString(@"the device can't send short message", nil)] show];
+    }
 }
 
 @end

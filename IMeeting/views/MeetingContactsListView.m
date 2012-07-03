@@ -144,7 +144,7 @@
 - (UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath{
     UITableViewCellEditingStyle _ret = UITableViewCellEditingStyleDelete;
     
-    // in meeting contact cann't be deleted
+    // in meeting contact can't be deleted
     if (0 == indexPath.section) {
         _ret =  UITableViewCellEditingStyleNone;
     }

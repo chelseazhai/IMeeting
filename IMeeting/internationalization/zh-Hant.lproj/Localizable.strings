@@ -10,6 +10,10 @@
 "meeting detail info view title" = "會議詳情";
 "add new meeting attendee" = "添加會議參與者";
 
+"invite contacts message body" = "%@ 邀請您加入會議（會議號：%d）";
+"the device can't send short message" = "您的設備不支持傳送簡訊";
+"send short message failed" = "簡訊傳送失敗，請保持您的手機移動業務通暢";
+
 // contacts section
 "contacts select view title" = "選擇參會者";
 "invite new added contacts to meeting" = "邀請加入會議";
