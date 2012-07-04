@@ -17,6 +17,7 @@
 // contacts section
 "contacts select view title" = "Select conference attendee";
 "invite new added contacts to meeting" = "Invite to meeting";
+"no contacts for joining meeting" = "No contacts waiting for joining meeting";
 "contacts list table view section header title" = "From addressBook";
 "meeting contacts table view in meeting section header title" = "In conference";
 "meeting contacts table view prein meeting section header title" = "Prepare for join conference";

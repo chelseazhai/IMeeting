@@ -289,8 +289,16 @@
 }
 
 - (void)inviteNewAddedContactsToMeeting{
-    if ([self validateViewControllerRef:self.viewControllerRef andSelector:@selector(inviteNewAddedContactsToMeeting:)]) {
-        [self.viewControllerRef performSelector:@selector(inviteNewAddedContactsToMeeting:) withObject:_mMeetingContactsListView.preparedForJoiningMeetingContactsPhoneNumberArray];
+    // check meeting contacts list table view prepared for joining meeting contacts phone number array
+    if (_mMeetingContactsListView.preparedForJoiningMeetingContactsPhoneNumberArray && [_mMeetingContactsListView.preparedForJoiningMeetingContactsPhoneNumberArray count] > 0) {
+        // validate view controller and selector implemetation
+        if ([self validateViewControllerRef:self.viewControllerRef andSelector:@selector(inviteNewAddedContactsToMeeting:)]) {
+            [self.viewControllerRef performSelector:@selector(inviteNewAddedContactsToMeeting:) withObject:_mMeetingContactsListView.preparedForJoiningMeetingContactsPhoneNumberArray];
+        }
+    }
+    else {
+        // show no contacts for joining meeting toast
+        [[iToast makeText:NSLocalizedString(@"no contacts for joining meeting", nil)] show];
     }
 }
 

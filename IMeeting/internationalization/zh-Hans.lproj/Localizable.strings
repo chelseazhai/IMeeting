@@ -17,6 +17,7 @@
 // contacts section
 "contacts select view title" = "选择参会者";
 "invite new added contacts to meeting" = "邀请加入会议";
+"no contacts for joining meeting" = "尚未选择待加入会议的人员";
 "contacts list table view section header title" = "来自通信录的";
 "meeting contacts table view in meeting section header title" = "在会议中的";
 "meeting contacts table view prein meeting section header title" = "准备加入会议的";
