@@ -50,7 +50,7 @@
 
 - (void)addNewMeetingAttendee{
     if ([self validateViewControllerRef:self.viewControllerRef andSelector:@selector(showContactsSelectViewController)]) {
-        [self.viewControllerRef performSelector:@selector(showContactsSelectViewController) withObject:nil];
+        [self.viewControllerRef performSelector:@selector(showContactsSelectViewController)];
     }
 }
 

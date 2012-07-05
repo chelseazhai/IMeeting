@@ -119,6 +119,20 @@
 			name = MeeingList;
 			sourceTree = "<group>";
 		};
+		DCB7F7EA15A52D7D0049C591 /* MeetingAttendeesList */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = MeetingAttendeesList;
+			sourceTree = "<group>";
+		};
+		DCB7F7EB15A52D8D0049C591 /* MeetingVideo */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = MeetingVideo;
+			sourceTree = "<group>";
+		};
 		DCBBB37C158A3BAE007C2301 = {
 			isa = PBXGroup;
 			children = (
@@ -334,6 +348,8 @@
 				DCE9BEA315A2A8B20077AAD7 /* MeetingDetailInfoViewController.m */,
 				DCE9BEA515A2A8D30077AAD7 /* MeetingDetailInfoContainerView.h */,
 				DCE9BEA615A2A8D30077AAD7 /* MeetingDetailInfoContainerView.m */,
+				DCB7F7EA15A52D7D0049C591 /* MeetingAttendeesList */,
+				DCB7F7EB15A52D8D0049C591 /* MeetingVideo */,
 			);
 			name = MeetingDetailInfo;
 			sourceTree = "<group>";
