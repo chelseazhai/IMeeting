@@ -10,6 +10,7 @@
 "meeting list view title" = "會議列表";
 
 "meeting detail info attendees list view title" = "會議成員列表";
+"meeting detail info attendees list view right bar button item title" = "成員列表";
 "meeting detail info video view title" = "視頻成員列表";
 
 "invite contacts message body" = "%@ 邀請您加入會議（會議號：%d）";

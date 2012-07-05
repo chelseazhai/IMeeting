@@ -10,6 +10,7 @@
 "meeting list view title" = "会议列表";
 
 "meeting detail info attendees list view title" = "会议成员列表";
+"meeting detail info attendees list view right bar button item title" = "成员列表";
 "meeting detail info video view title" = "视频成员列表";
 
 "the device can't send short message" = "您的设备不支持发送短信";

@@ -13,13 +13,22 @@
 #import "QuartzCore/QuartzCore.h"
 
 // video list view title button frame width
-#define VIDEOLISTVIEWTITLEBUTTON_WIDTH  100.0
+#define VIDEOLISTVIEWTITLEBUTTON_WIDTH  120.0
+
+// meeting detailInfo view right bar button item array
+#define RIGHTBARBUTTONITEMSARRAY    [NSArray arrayWithObjects:[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(addNewMeetingAttendee)], [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"meeting detail info attendees list view right bar button item title", nil) style:UIBarButtonItemStyleDone target:self action:@selector(backToAttendeesListView)], nil]
 
 // MeetingDetailInfoContainerView extension
 @interface MeetingDetailInfoContainerView ()
 
 // add new meeting attendee from addressBook or user input
 - (void)addNewMeetingAttendee;
+
+// back to meeting attendees list view
+- (void)backToAttendeesListView;
+
+// change meeting attendee for watching his video
+- (void)changeAttendeeForWatchingVideo;
 
 @end
 
@@ -38,20 +47,24 @@
         // set title
         self.title = NSLocalizedString(@"meeting detail info attendees list view title", nil);
         
-        // set title view
-        // create and init video list view title button
-        UIButton *_videoListViewTitleBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+        // create and init video list view title view
+        _mVideoListViewTitleView = [UIButton buttonWithType:UIButtonTypeCustom];
         // set frame
-        _videoListViewTitleBtn.frame = CGRectMake(0.0, 0.0, VIDEOLISTVIEWTITLEBUTTON_WIDTH, [CommonUtils appNavigationBarHeight]);
+        _mVideoListViewTitleView.frame = CGRectMake(0.0, 0.0, VIDEOLISTVIEWTITLEBUTTON_WIDTH, [CommonUtils appNavigationBarHeight]);
         // set title
-        [_videoListViewTitleBtn setTitle:NSLocalizedString(@"meeting detail info video view title", nil) forState:UIControlStateNormal];
+        [_mVideoListViewTitleView setTitle:NSLocalizedString(@"meeting detail info video view title", nil) forState:UIControlStateNormal];
+        // set title font
+        _mVideoListViewTitleView.titleLabel.font = [UIFont boldSystemFontOfSize:20.0];
+        // set show touch when hightlighted
+        _mVideoListViewTitleView.showsTouchWhenHighlighted = YES;
         // add target
-        [_videoListViewTitleBtn addTarget:self action:nil forControlEvents:UIControlEventTouchUpInside];
-        // set title view: button
-        //self.titleView = _videoListViewTitleBtn;
+        [_mVideoListViewTitleView addTarget:self action:@selector(changeAttendeeForWatchingVideo) forControlEvents:UIControlEventTouchUpInside];
         
-        // set right bar button item
-        self.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(addNewMeetingAttendee)];
+        // set title view
+        self.titleView = _mVideoListViewTitleView;
+        
+        // set right bar button item: back to meeting attendees list view
+        self.rightBarButtonItem = [RIGHTBARBUTTONITEMSARRAY objectAtIndex:1];
         
         // get UIScreen bounds
         CGRect _screenBounds = [[UIScreen mainScreen] bounds];
@@ -99,8 +112,10 @@
     if (_mMeetingAttendeesListView.hidden) {
         // show meeting attendees list table view
         _mMeetingAttendeesListView.hidden = NO;
-        // hide title view
-        self.titleView.hidden = YES;
+        // update right bar button item
+        self.rightBarButtonItem = [RIGHTBARBUTTONITEMSARRAY objectAtIndex:_mMeetingAttendeesListView.hidden];
+        // clear title view
+        self.titleView = nil;
         
         // set sub type
         _animation.subtype = kCATransitionFromTop;
@@ -108,21 +123,31 @@
     else {
         // hide meeting attendees list table view
         _mMeetingAttendeesListView.hidden = YES;
-        // show title view
-        self.titleView.hidden = NO;
+        // update right bar button item
+        self.rightBarButtonItem = [RIGHTBARBUTTONITEMSARRAY objectAtIndex:_mMeetingAttendeesListView.hidden];
+        // reset title view
+        self.titleView = _mVideoListViewTitleView;
         
         // set sub type
         _animation.subtype = kCATransitionFromBottom;
     }
     
     // add meeting attendees list table view animation
-    [_mMeetingAttendeesListView.layer addAnimation:_animation forKey:@"meetingAttendeesListViewAnimation"]; 
+    [_mMeetingAttendeesListView.layer addAnimation:_animation forKey:@"meetingAttendeesListViewAnimation"];
 }
 
 - (void)addNewMeetingAttendee{
     if ([self validateViewControllerRef:self.viewControllerRef andSelector:@selector(showContactsSelectViewController)]) {
         [self.viewControllerRef performSelector:@selector(showContactsSelectViewController)];
     }
+}
+
+- (void)backToAttendeesListView{
+    [self IndicateMeetingAttendeesListView]; 
+}
+
+- (void)changeAttendeeForWatchingVideo{
+    NSLog(@"changeAttendeeForWatchingVideo");
 }
 
 @end

@@ -16,6 +16,9 @@
     MeetingVideoView *_mMeetingVideoView;
     // subview meeting attendees list table view
     MeetingAttendeesListView *_mMeetingAttendeesListView;
+    
+    // video list view title view: button
+    UIButton *_mVideoListViewTitleView;
 }
 
 // indicate meeting attendees list table view
