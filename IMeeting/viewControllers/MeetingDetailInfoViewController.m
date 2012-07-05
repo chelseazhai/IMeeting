@@ -8,7 +8,7 @@
 
 #import "MeetingDetailInfoViewController.h"
 
-#import "MeetingDetailInfoView.h"
+#import "MeetingDetailInfoContainerView.h"
 
 #import "CommonToolkit/CommonToolkit.h"
 
@@ -28,7 +28,7 @@
 @implementation MeetingDetailInfoViewController
 
 - (id)init{
-    return [super initWithCompatibleView:[[MeetingDetailInfoView alloc] init]];
+    return [super initWithCompatibleView:[[MeetingDetailInfoContainerView alloc] init]];
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil

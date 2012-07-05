@@ -1,17 +1,17 @@
 //
-//  MeetingDetailInfoView.m
+//  MeetingDetailInfoContainerView.m
 //  IMeeting
 //
 //  Created by  on 12-7-3.
 //  Copyright (c) 2012年 richitec. All rights reserved.
 //
 
-#import "MeetingDetailInfoView.h"
+#import "MeetingDetailInfoContainerView.h"
 
 #import "CommonToolkit/CommonToolkit.h"
 
-// MeetingDetailInfoView extension
-@interface MeetingDetailInfoView ()
+// MeetingDetailInfoContainerView extension
+@interface MeetingDetailInfoContainerView ()
 
 // add new meeting attendee from addressBook or user input
 - (void)addNewMeetingAttendee;
@@ -21,7 +21,7 @@
 
 
 
-@implementation MeetingDetailInfoView
+@implementation MeetingDetailInfoContainerView
 
 - (id)initWithFrame:(CGRect)frame
 {

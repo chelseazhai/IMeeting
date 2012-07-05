@@ -35,7 +35,7 @@
 		DCC036A2159C6E7900D19A26 /* CommonToolkitBundle.bundle in Resources */ = {isa = PBXBuildFile; fileRef = DCC036A0159C6E7900D19A26 /* CommonToolkitBundle.bundle */; };
 		DCC036A3159C6E7900D19A26 /* Pinyin4jBundle.bundle in Resources */ = {isa = PBXBuildFile; fileRef = DCC036A1159C6E7900D19A26 /* Pinyin4jBundle.bundle */; };
 		DCE9BEA415A2A8B20077AAD7 /* MeetingDetailInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DCE9BEA315A2A8B20077AAD7 /* MeetingDetailInfoViewController.m */; };
-		DCE9BEA715A2A8D30077AAD7 /* MeetingDetailInfoView.m in Sources */ = {isa = PBXBuildFile; fileRef = DCE9BEA615A2A8D30077AAD7 /* MeetingDetailInfoView.m */; };
+		DCE9BEA715A2A8D30077AAD7 /* MeetingDetailInfoContainerView.m in Sources */ = {isa = PBXBuildFile; fileRef = DCE9BEA615A2A8D30077AAD7 /* MeetingDetailInfoContainerView.m */; };
 		DCE9BEC315A2E0C70077AAD7 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DCE9BEC215A2E0C70077AAD7 /* MessageUI.framework */; };
 /* End PBXBuildFile section */
 
@@ -85,8 +85,8 @@
 		DCC036A1159C6E7900D19A26 /* Pinyin4jBundle.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Pinyin4jBundle.bundle; sourceTree = "<group>"; };
 		DCE9BEA215A2A8B20077AAD7 /* MeetingDetailInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MeetingDetailInfoViewController.h; path = viewControllers/MeetingDetailInfoViewController.h; sourceTree = "<group>"; };
 		DCE9BEA315A2A8B20077AAD7 /* MeetingDetailInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MeetingDetailInfoViewController.m; path = viewControllers/MeetingDetailInfoViewController.m; sourceTree = "<group>"; };
-		DCE9BEA515A2A8D30077AAD7 /* MeetingDetailInfoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MeetingDetailInfoView.h; path = views/MeetingDetailInfoView.h; sourceTree = "<group>"; };
-		DCE9BEA615A2A8D30077AAD7 /* MeetingDetailInfoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MeetingDetailInfoView.m; path = views/MeetingDetailInfoView.m; sourceTree = "<group>"; };
+		DCE9BEA515A2A8D30077AAD7 /* MeetingDetailInfoContainerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MeetingDetailInfoContainerView.h; path = views/MeetingDetailInfoContainerView.h; sourceTree = "<group>"; };
+		DCE9BEA615A2A8D30077AAD7 /* MeetingDetailInfoContainerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MeetingDetailInfoContainerView.m; path = views/MeetingDetailInfoContainerView.m; sourceTree = "<group>"; };
 		DCE9BEC215A2E0C70077AAD7 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
@@ -112,6 +112,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		DCB7F7E815A52ABE0049C591 /* MeeingList */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = MeeingList;
+			sourceTree = "<group>";
+		};
 		DCBBB37C158A3BAE007C2301 = {
 			isa = PBXGroup;
 			children = (
@@ -229,6 +236,7 @@
 		DCBBB3D9158A3E4B007C2301 /* Meeting */ = {
 			isa = PBXGroup;
 			children = (
+				DCB7F7E815A52ABE0049C591 /* MeeingList */,
 				DCE9BEA015A2A8760077AAD7 /* MeetingDetailInfo */,
 			);
 			name = Meeting;
@@ -324,8 +332,8 @@
 			children = (
 				DCE9BEA215A2A8B20077AAD7 /* MeetingDetailInfoViewController.h */,
 				DCE9BEA315A2A8B20077AAD7 /* MeetingDetailInfoViewController.m */,
-				DCE9BEA515A2A8D30077AAD7 /* MeetingDetailInfoView.h */,
-				DCE9BEA615A2A8D30077AAD7 /* MeetingDetailInfoView.m */,
+				DCE9BEA515A2A8D30077AAD7 /* MeetingDetailInfoContainerView.h */,
+				DCE9BEA615A2A8D30077AAD7 /* MeetingDetailInfoContainerView.m */,
 			);
 			name = MeetingDetailInfo;
 			sourceTree = "<group>";
@@ -411,7 +419,7 @@
 				DCC0365A159C58A400D19A26 /* ContactsProcessToolbar.m in Sources */,
 				DCC0365D159C58C200D19A26 /* ContactsProcessSoftKeyboard.m in Sources */,
 				DCE9BEA415A2A8B20077AAD7 /* MeetingDetailInfoViewController.m in Sources */,
-				DCE9BEA715A2A8D30077AAD7 /* MeetingDetailInfoView.m in Sources */,
+				DCE9BEA715A2A8D30077AAD7 /* MeetingDetailInfoContainerView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

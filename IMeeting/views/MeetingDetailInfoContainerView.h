@@ -1,5 +1,5 @@
 //
-//  MeetingDetailInfoView.h
+//  MeetingDetailInfoContainerView.h
 //  IMeeting
 //
 //  Created by  on 12-7-3.
@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface MeetingDetailInfoView : UIView
+@interface MeetingDetailInfoContainerView : UIView
 
 @end
