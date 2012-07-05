@@ -58,6 +58,8 @@
         
         // hide softKeyboard first
         _mSoftKeyboardHidden = YES;
+        // set softKeyboard default type
+        _mSoftKeyboardType = iosSystem;
         
         // save origin frame height and update its frame
         CGFloat _originFrameHeight = frame.size.height;
@@ -189,7 +191,7 @@
     _mInputDiaplayLabel.text = pTextField.text;
     
     // call parent view method:(void)searchContactWithParameter:
-    [((ContactsSelectContainerView *)self.superview) searchContactWithParameter:pTextField.text];
+    [((ContactsSelectContainerView *)self.superview) searchContactWithParameter:nil == pTextField.text ? @"" : pTextField.text];
 }
 
 - (void)indicateSoftKeyboard{
