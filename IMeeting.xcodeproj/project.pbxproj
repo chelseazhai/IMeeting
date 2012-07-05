@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DCB7F80315A548CC0049C591 /* MeetingVideoView.m in Sources */ = {isa = PBXBuildFile; fileRef = DCB7F80215A548CC0049C591 /* MeetingVideoView.m */; };
+		DCB7F80615A549020049C591 /* MeetingAttendeesListView.m in Sources */ = {isa = PBXBuildFile; fileRef = DCB7F80515A549020049C591 /* MeetingAttendeesListView.m */; };
 		DCBBB38C158A3BAE007C2301 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DCBBB38B158A3BAE007C2301 /* UIKit.framework */; };
 		DCBBB38E158A3BAE007C2301 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DCBBB38D158A3BAE007C2301 /* Foundation.framework */; };
 		DCBBB390158A3BAE007C2301 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DCBBB38F158A3BAE007C2301 /* CoreGraphics.framework */; };
@@ -40,6 +42,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		DCB7F80115A548CC0049C591 /* MeetingVideoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MeetingVideoView.h; path = views/MeetingVideoView.h; sourceTree = "<group>"; };
+		DCB7F80215A548CC0049C591 /* MeetingVideoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MeetingVideoView.m; path = views/MeetingVideoView.m; sourceTree = "<group>"; };
+		DCB7F80415A549020049C591 /* MeetingAttendeesListView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MeetingAttendeesListView.h; path = views/MeetingAttendeesListView.h; sourceTree = "<group>"; };
+		DCB7F80515A549020049C591 /* MeetingAttendeesListView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MeetingAttendeesListView.m; path = views/MeetingAttendeesListView.m; sourceTree = "<group>"; };
 		DCBBB387158A3BAE007C2301 /* IMeeting.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = IMeeting.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DCBBB38B158A3BAE007C2301 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		DCBBB38D158A3BAE007C2301 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -122,6 +128,8 @@
 		DCB7F7EA15A52D7D0049C591 /* MeetingAttendeesList */ = {
 			isa = PBXGroup;
 			children = (
+				DCB7F80415A549020049C591 /* MeetingAttendeesListView.h */,
+				DCB7F80515A549020049C591 /* MeetingAttendeesListView.m */,
 			);
 			name = MeetingAttendeesList;
 			sourceTree = "<group>";
@@ -129,6 +137,8 @@
 		DCB7F7EB15A52D8D0049C591 /* MeetingVideo */ = {
 			isa = PBXGroup;
 			children = (
+				DCB7F80115A548CC0049C591 /* MeetingVideoView.h */,
+				DCB7F80215A548CC0049C591 /* MeetingVideoView.m */,
 			);
 			name = MeetingVideo;
 			sourceTree = "<group>";
@@ -436,6 +446,8 @@
 				DCC0365D159C58C200D19A26 /* ContactsProcessSoftKeyboard.m in Sources */,
 				DCE9BEA415A2A8B20077AAD7 /* MeetingDetailInfoViewController.m in Sources */,
 				DCE9BEA715A2A8D30077AAD7 /* MeetingDetailInfoContainerView.m in Sources */,
+				DCB7F80315A548CC0049C591 /* MeetingVideoView.m in Sources */,
+				DCB7F80615A549020049C591 /* MeetingAttendeesListView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
