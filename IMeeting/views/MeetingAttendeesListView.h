@@ -8,6 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
-@interface MeetingAttendeesListView : UITableView
+@interface MeetingAttendeesListView : UITableView <UITableViewDelegate> {
+    // meeting attendees list table view scrolling to top
+    BOOL _mScrollingToTop;
+    
+    // gragging begin content offset
+    CGPoint _mDraggingBeginContentOffset;
+}
 
 @end

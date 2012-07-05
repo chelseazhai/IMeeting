@@ -8,6 +8,17 @@
 
 #import <UIKit/UIKit.h>
 
-@interface MeetingDetailInfoContainerView : UIView
+#import "MeetingVideoView.h"
+#import "MeetingAttendeesListView.h"
+
+@interface MeetingDetailInfoContainerView : UIView {
+    // subview meeting video view
+    MeetingVideoView *_mMeetingVideoView;
+    // subview meeting attendees list table view
+    MeetingAttendeesListView *_mMeetingAttendeesListView;
+}
+
+// indicate meeting attendees list table view
+- (void)IndicateMeetingAttendeesListView;
 
 @end

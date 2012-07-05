@@ -7,8 +7,10 @@
 */
 
 // meeting section
-"meeting detail info view title" = "Meeting detailInfo";
-"add new meeting attendee" = "Add new attendee";
+"meeting list view title" = "Meeting list";
+
+"meeting detail info attendees list view title" = "Attendees list";
+"meeting detail info video view title" = "Video list";
 
 "the device can't send short message" = "Your device can't supply SMS";
 "invite contacts message body" = "%@ invite you to join meeting（meeting No：%d）";

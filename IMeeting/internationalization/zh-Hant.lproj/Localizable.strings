@@ -7,8 +7,10 @@
 */
 
 // meeting section
-"meeting detail info view title" = "會議詳情";
-"add new meeting attendee" = "添加會議參與者";
+"meeting list view title" = "會議列表";
+
+"meeting detail info attendees list view title" = "會議成員列表";
+"meeting detail info video view title" = "視頻成員列表";
 
 "invite contacts message body" = "%@ 邀請您加入會議（會議號：%d）";
 "the device can't send short message" = "您的設備不支持傳送簡訊";

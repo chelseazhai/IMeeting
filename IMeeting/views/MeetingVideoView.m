@@ -8,13 +8,19 @@
 
 #import "MeetingVideoView.h"
 
+#import "MeetingDetailInfoContainerView.h"
+
 @implementation MeetingVideoView
 
 - (id)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
     if (self) {
-        // Initialization code
+        // set background color
+        self.backgroundColor = [UIColor cyanColor];
+        
+        // set gesture recognizer delegate
+        self.viewGestureRecognizerDelegate = self;
     }
     return self;
 }
@@ -27,5 +33,17 @@
     // Drawing code
 }
 */
+
+- (UISwipeGestureRecognizerDirection)swipeDirectionInView:(UIView *)pView{
+    return UISwipeGestureRecognizerDirectionUp;
+}
+
+- (void)view:(UIView *)pView swipeAtPoint:(CGPoint)pPoint andDirection:(UISwipeGestureRecognizerDirection)pDirection{
+    // check swipe direction
+    if (UISwipeGestureRecognizerDirectionUp == pDirection) {
+        // show meeting attendees list table view
+        [(MeetingDetailInfoContainerView *)self.superview IndicateMeetingAttendeesListView];
+    }
+}
 
 @end

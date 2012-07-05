@@ -7,8 +7,10 @@
 */
 
 // meeting section
-"meeting detail info view title" = "会议详情";
-"add new meeting attendee" = "添加会议参与者";
+"meeting list view title" = "会议列表";
+
+"meeting detail info attendees list view title" = "会议成员列表";
+"meeting detail info video view title" = "视频成员列表";
 
 "the device can't send short message" = "您的设备不支持发送短信";
 "invite contacts message body" = "%@ 邀请您加入会议（会议号：%d）";

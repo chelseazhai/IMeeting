@@ -1,5 +1,5 @@
 //
-//  MeetingVideoView.h
+//  MeetingListViewController.h
 //  IMeeting
 //
 //  Created by  on 12-7-5.
@@ -8,8 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-#import "CommonToolkit/CommonToolkit.h"
-
-@interface MeetingVideoView : UIView <UIViewGestureRecognizerDelegate>
+@interface MeetingListViewController : UIViewController
 
 @end

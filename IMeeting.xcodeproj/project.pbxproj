@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		DCB7F80315A548CC0049C591 /* MeetingVideoView.m in Sources */ = {isa = PBXBuildFile; fileRef = DCB7F80215A548CC0049C591 /* MeetingVideoView.m */; };
 		DCB7F80615A549020049C591 /* MeetingAttendeesListView.m in Sources */ = {isa = PBXBuildFile; fileRef = DCB7F80515A549020049C591 /* MeetingAttendeesListView.m */; };
+		DCB7F80D15A54B390049C591 /* MeetingListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DCB7F80C15A54B390049C591 /* MeetingListViewController.m */; };
+		DCB7F81115A54BA80049C591 /* MeetingListView.m in Sources */ = {isa = PBXBuildFile; fileRef = DCB7F81015A54BA80049C591 /* MeetingListView.m */; };
+		DCB7F82615A590FC0049C591 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DCB7F82515A590FC0049C591 /* QuartzCore.framework */; };
 		DCBBB38C158A3BAE007C2301 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DCBBB38B158A3BAE007C2301 /* UIKit.framework */; };
 		DCBBB38E158A3BAE007C2301 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DCBBB38D158A3BAE007C2301 /* Foundation.framework */; };
 		DCBBB390158A3BAE007C2301 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DCBBB38F158A3BAE007C2301 /* CoreGraphics.framework */; };
@@ -46,6 +49,11 @@
 		DCB7F80215A548CC0049C591 /* MeetingVideoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MeetingVideoView.m; path = views/MeetingVideoView.m; sourceTree = "<group>"; };
 		DCB7F80415A549020049C591 /* MeetingAttendeesListView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MeetingAttendeesListView.h; path = views/MeetingAttendeesListView.h; sourceTree = "<group>"; };
 		DCB7F80515A549020049C591 /* MeetingAttendeesListView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MeetingAttendeesListView.m; path = views/MeetingAttendeesListView.m; sourceTree = "<group>"; };
+		DCB7F80B15A54B390049C591 /* MeetingListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MeetingListViewController.h; path = viewControllers/MeetingListViewController.h; sourceTree = "<group>"; };
+		DCB7F80C15A54B390049C591 /* MeetingListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MeetingListViewController.m; path = viewControllers/MeetingListViewController.m; sourceTree = "<group>"; };
+		DCB7F80F15A54BA80049C591 /* MeetingListView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MeetingListView.h; path = views/MeetingListView.h; sourceTree = "<group>"; };
+		DCB7F81015A54BA80049C591 /* MeetingListView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MeetingListView.m; path = views/MeetingListView.m; sourceTree = "<group>"; };
+		DCB7F82515A590FC0049C591 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		DCBBB387158A3BAE007C2301 /* IMeeting.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = IMeeting.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DCBBB38B158A3BAE007C2301 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		DCBBB38D158A3BAE007C2301 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -101,6 +109,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DCB7F82615A590FC0049C591 /* QuartzCore.framework in Frameworks */,
 				DCC03642159C43E700D19A26 /* libicucore.dylib in Frameworks */,
 				DCBBB3C8158A3DB5007C2301 /* libz.dylib in Frameworks */,
 				DCE9BEC315A2E0C70077AAD7 /* MessageUI.framework in Frameworks */,
@@ -121,6 +130,10 @@
 		DCB7F7E815A52ABE0049C591 /* MeeingList */ = {
 			isa = PBXGroup;
 			children = (
+				DCB7F80B15A54B390049C591 /* MeetingListViewController.h */,
+				DCB7F80C15A54B390049C591 /* MeetingListViewController.m */,
+				DCB7F80F15A54BA80049C591 /* MeetingListView.h */,
+				DCB7F81015A54BA80049C591 /* MeetingListView.m */,
 			);
 			name = MeeingList;
 			sourceTree = "<group>";
@@ -165,6 +178,7 @@
 			children = (
 				DCC03641159C43E700D19A26 /* libicucore.dylib */,
 				DCBBB3C7158A3DB5007C2301 /* libz.dylib */,
+				DCB7F82515A590FC0049C591 /* QuartzCore.framework */,
 				DCE9BEC215A2E0C70077AAD7 /* MessageUI.framework */,
 				DCBBB3C5158A3DB1007C2301 /* SystemConfiguration.framework */,
 				DCBBB3C3158A3DAD007C2301 /* MobileCoreServices.framework */,
@@ -448,6 +462,8 @@
 				DCE9BEA715A2A8D30077AAD7 /* MeetingDetailInfoContainerView.m in Sources */,
 				DCB7F80315A548CC0049C591 /* MeetingVideoView.m in Sources */,
 				DCB7F80615A549020049C591 /* MeetingAttendeesListView.m in Sources */,
+				DCB7F80D15A54B390049C591 /* MeetingListViewController.m in Sources */,
+				DCB7F81115A54BA80049C591 /* MeetingListView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -56,6 +56,7 @@
     _cell.pressedBackgroundColor = [UIColor blueColor];
     
     @autoreleasepool {
+        // create and init softKeyboard front view
         UILabel *_label = [[UILabel alloc] init];
         _label.text = [[CONTACTSPROCESS_SOFTKEYBOARD_CONTENTS objectForKey:[NSNumber numberWithInteger:pIndexPath.skb_row]] objectAtIndex:pIndexPath.skb_cell];
         _label.textAlignment = UITextAlignmentCenter;
