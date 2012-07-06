@@ -24,7 +24,7 @@
 // softKeyboard indicate button title array
 #define INDICATEBUTTON_TITLE    [NSArray arrayWithObjects:@"▼", @"▲", nil]
 // softKeyboard type switch button title array
-#define TYPESWITCHBUTTON_TITLE  [NSArray arrayWithObjects:@"ABC ▲", @"123 ▼", nil]
+#define TYPESWITCHBUTTON_TITLE  [NSArray arrayWithObjects:@"ABC ▼", @"123 ▲", nil]
 
 // ContactsSearchToolbar extension
 @interface ContactsProcessToolbar ()
