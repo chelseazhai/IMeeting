@@ -19,6 +19,9 @@
     
     // video list view title view: button
     UIButton *_mVideoListViewTitleView;
+    
+    // meeting attendees list view hidden flag
+    BOOL _mMeetingAttendeesListViewHidden;
 }
 
 // indicate meeting attendees list table view

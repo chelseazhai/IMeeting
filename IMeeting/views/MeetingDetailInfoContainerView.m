@@ -77,9 +77,9 @@
         _mMeetingVideoView = [[MeetingVideoView alloc] initWithFrame:self.frame];
         
         // init meeting attendees list table view
-        _mMeetingAttendeesListView = [[MeetingAttendeesListView alloc] initWithFrame:/*CGRectMake(self.frame.origin.x, self.frame.origin.y + self.frame.size.height, self.frame.size.width, self.frame.size.height)*/_mMeetingVideoView.frame];
+        _mMeetingAttendeesListView = [[MeetingAttendeesListView alloc] initWithFrame:CGRectMake(self.frame.origin.x, self.frame.origin.y + self.frame.size.height, self.frame.size.width, self.frame.size.height)];
         // hide first
-        _mMeetingAttendeesListView.hidden = YES;
+        _mMeetingAttendeesListViewHidden = YES;
         
         // add meeting video view and meeting attendees list table view to meeting detailInfo view
         [self addSubview:_mMeetingVideoView];
@@ -98,42 +98,53 @@
 */
 
 - (void)IndicateMeetingAttendeesListView{
-    // create and init animation
-    CATransition *_animation = [CATransition animation];
+    // create and init meeting attendees list view animation
+    CATransition *_animationMALV = [CATransition animation];
+    // create and init meeting video view animation
+    CATransition *_animationMVV = [CATransition animation];
     // set delegate
-    _animation.delegate = self;
+    _animationMALV.delegate = _animationMVV.delegate = self;
     // set duration
-    _animation.duration = 0.35;
+    _animationMALV.duration = _animationMVV.duration = 1.5;
     // set timing
-    _animation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionLinear];
+    _animationMALV.timingFunction = _animationMVV.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionLinear];
     // set type
-    _animation.type = kCATransitionPush;
+    _animationMALV.type = kCATransitionPush;
+    _animationMVV.type = kCATransitionReveal;
     
-    if (_mMeetingAttendeesListView.hidden) {
+    if (_mMeetingAttendeesListViewHidden) {
+        // set sub type
+        _animationMALV.subtype = _animationMVV.subtype = kCATransitionFromTop;
+        
         // show meeting attendees list table view
-        _mMeetingAttendeesListView.hidden = NO;
+        _mMeetingAttendeesListViewHidden = NO;
+        _mMeetingVideoView.center = CGPointMake(_mMeetingVideoView.center.x, _mMeetingVideoView.center.y - self.frame.size.height);
+        _mMeetingAttendeesListView.center = self.center;
+        
         // update right bar button item
         self.rightBarButtonItem = [RIGHTBARBUTTONITEMSARRAY objectAtIndex:_mMeetingAttendeesListView.hidden];
         // clear title view
         self.titleView = nil;
-        
-        // set sub type
-        _animation.subtype = kCATransitionFromTop;
     }
     else {
+        // set sub type
+        _animationMALV.subtype = _animationMVV.subtype = kCATransitionFromBottom;
+        
         // hide meeting attendees list table view
-        _mMeetingAttendeesListView.hidden = YES;
+        _mMeetingAttendeesListViewHidden = YES;
+        _mMeetingVideoView.center = self.center;
+        _mMeetingAttendeesListView.center = CGPointMake(_mMeetingAttendeesListView.center.x, _mMeetingAttendeesListView.center.y + self.frame.size.height);
+        
         // update right bar button item
         self.rightBarButtonItem = [RIGHTBARBUTTONITEMSARRAY objectAtIndex:_mMeetingAttendeesListView.hidden];
         // reset title view
         self.titleView = _mVideoListViewTitleView;
-        
-        // set sub type
-        _animation.subtype = kCATransitionFromBottom;
     }
     
     // add meeting attendees list table view animation
-    [_mMeetingAttendeesListView.layer addAnimation:_animation forKey:@"meetingAttendeesListViewAnimation"];
+    [_mMeetingAttendeesListView.layer addAnimation:_animationMALV forKey:@"meetingAttendeesListViewAnimation"];
+    // add meeting video view animation
+    [_mMeetingVideoView.layer addAnimation:_animationMVV forKey:@"meetingVideoViewAnimation"];
 }
 
 - (void)addNewMeetingAttendee{
