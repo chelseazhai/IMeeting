@@ -105,7 +105,7 @@
     // set delegate
     _animationMALV.delegate = _animationMVV.delegate = self;
     // set duration
-    _animationMALV.duration = _animationMVV.duration = 1.5;
+    _animationMALV.duration = _animationMVV.duration = 0.6;
     // set timing
     _animationMALV.timingFunction = _animationMVV.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionLinear];
     // set type
@@ -122,7 +122,7 @@
         _mMeetingAttendeesListView.center = self.center;
         
         // update right bar button item
-        self.rightBarButtonItem = [RIGHTBARBUTTONITEMSARRAY objectAtIndex:_mMeetingAttendeesListView.hidden];
+        self.rightBarButtonItem = [RIGHTBARBUTTONITEMSARRAY objectAtIndex:_mMeetingAttendeesListViewHidden];
         // clear title view
         self.titleView = nil;
     }
@@ -136,7 +136,7 @@
         _mMeetingAttendeesListView.center = CGPointMake(_mMeetingAttendeesListView.center.x, _mMeetingAttendeesListView.center.y + self.frame.size.height);
         
         // update right bar button item
-        self.rightBarButtonItem = [RIGHTBARBUTTONITEMSARRAY objectAtIndex:_mMeetingAttendeesListView.hidden];
+        self.rightBarButtonItem = [RIGHTBARBUTTONITEMSARRAY objectAtIndex:_mMeetingAttendeesListViewHidden];
         // reset title view
         self.titleView = _mVideoListViewTitleView;
     }

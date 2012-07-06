@@ -22,9 +22,9 @@
 #define PADDING 1.0
 
 // softKeyboard indicate button title array
-#define INDICATEBUTTON_TITLE    [NSArray arrayWithObjects:@"down", @"up", nil]
+#define INDICATEBUTTON_TITLE    [NSArray arrayWithObjects:@"▼", @"▲", nil]
 // softKeyboard type switch button title array
-#define TYPESWITCHBUTTON_TITLE  [NSArray arrayWithObjects:@"abc", @"123", nil]
+#define TYPESWITCHBUTTON_TITLE  [NSArray arrayWithObjects:@"ABC ▲", @"123 ▼", nil]
 
 // ContactsSearchToolbar extension
 @interface ContactsProcessToolbar ()
@@ -92,6 +92,8 @@
         _mSoftKeyboardTypeSwitchBtn.showsTouchWhenHighlighted = YES;
         // set title
         [_mSoftKeyboardTypeSwitchBtn setTitle:[TYPESWITCHBUTTON_TITLE objectAtIndex:_mSoftKeyboardType] forState:UIControlStateNormal];
+        // set title font
+        _mSoftKeyboardTypeSwitchBtn.titleLabel.font = [UIFont boldSystemFontOfSize:11.0];
         // add target
         [_mSoftKeyboardTypeSwitchBtn addTarget:self action:@selector(changeSoftkeyboardType) forControlEvents:UIControlEventTouchUpInside];
         
@@ -182,6 +184,31 @@
                 // manual call method:(void)userInputTextDidChanged:
                 [self userInputTextDidChanged:_mUserInputTextField];
             }
+        }
+    }
+}
+
+- (NSArray *)longPressCellIndexPathsInSoftKeyboard:(UISoftKeyboard *)pSoftKeyboard{
+    NSMutableArray *_ret = [[NSMutableArray alloc] init];
+    
+    // add need long press cell indexPath to return result
+    @autoreleasepool {
+        [_ret addObject:/*softKeyboard delete cell*/[NSIndexPath indexPathForCell:2 inRow:3]];
+    }
+    
+    return _ret;
+}
+
+- (void)softKeyboard:(UISoftKeyboard *)pSoftKeyboard longPressCellAtIndexPath:(NSIndexPath *)indexPath{
+    // check softKeyboard cell function according to cell indexPath
+    // delete
+    if (indexPath.skb_row == 3 && indexPath.skb_cell == 2) {
+        // delete all
+        if (_mUserInputTextField.text && ![[_mUserInputTextField.text trimWhitespaceAndNewline] isEqualToString:@""]) {
+            // set inputDiaplayLabel text for user input with custom softKeyboard
+            _mUserInputTextField.text = @"";
+            // manual call method:(void)userInputTextDidChanged:
+            [self userInputTextDidChanged:_mUserInputTextField];
         }
     }
 }

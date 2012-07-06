@@ -17,7 +17,7 @@
     self = [super initWithFrame:frame];
     if (self) {
         // set background color
-        self.backgroundColor = [UIColor cyanColor];
+        self.backgroundColor = [UIColor colorWithWhite:0.0 alpha:0.8];
         
         // set gesture recognizer delegate
         self.viewGestureRecognizerDelegate = self;
