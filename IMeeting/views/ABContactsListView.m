@@ -163,6 +163,9 @@
                     break;
                     
                 case contactModify:
+                    [self reloadRowAtIndexPath:[NSIndexPath indexPathForRow:[_mPresentContactsInfoArrayRef indexOfObject:[[AddressBookManager shareAddressBookManager] getContactInfoById:_contactId.intValue]] inSection:0] withRowAnimation:UITableViewRowAnimationMiddle];
+                    break;
+                    
                 case contactDelete:
                     [self reloadData];
                     break;
