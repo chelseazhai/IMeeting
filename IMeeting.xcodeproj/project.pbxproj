@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DC11304015B6ACD300B397F7 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC11303F15B6ACD300B397F7 /* CoreText.framework */; };
 		DCB7F80315A548CC0049C591 /* MeetingVideoView.m in Sources */ = {isa = PBXBuildFile; fileRef = DCB7F80215A548CC0049C591 /* MeetingVideoView.m */; };
 		DCB7F80615A549020049C591 /* MeetingAttendeesListView.m in Sources */ = {isa = PBXBuildFile; fileRef = DCB7F80515A549020049C591 /* MeetingAttendeesListView.m */; };
 		DCB7F80D15A54B390049C591 /* MeetingListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DCB7F80C15A54B390049C591 /* MeetingListViewController.m */; };
@@ -45,6 +46,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		DC11303F15B6ACD300B397F7 /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
 		DCB7F80115A548CC0049C591 /* MeetingVideoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MeetingVideoView.h; path = views/MeetingVideoView.h; sourceTree = "<group>"; };
 		DCB7F80215A548CC0049C591 /* MeetingVideoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MeetingVideoView.m; path = views/MeetingVideoView.m; sourceTree = "<group>"; };
 		DCB7F80415A549020049C591 /* MeetingAttendeesListView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MeetingAttendeesListView.h; path = views/MeetingAttendeesListView.h; sourceTree = "<group>"; };
@@ -109,9 +111,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DCB7F82615A590FC0049C591 /* QuartzCore.framework in Frameworks */,
 				DCC03642159C43E700D19A26 /* libicucore.dylib in Frameworks */,
 				DCBBB3C8158A3DB5007C2301 /* libz.dylib in Frameworks */,
+				DC11304015B6ACD300B397F7 /* CoreText.framework in Frameworks */,
+				DCB7F82615A590FC0049C591 /* QuartzCore.framework in Frameworks */,
 				DCE9BEC315A2E0C70077AAD7 /* MessageUI.framework in Frameworks */,
 				DCBBB3C6158A3DB1007C2301 /* SystemConfiguration.framework in Frameworks */,
 				DCBBB3C4158A3DAD007C2301 /* MobileCoreServices.framework in Frameworks */,
@@ -178,6 +181,7 @@
 			children = (
 				DCC03641159C43E700D19A26 /* libicucore.dylib */,
 				DCBBB3C7158A3DB5007C2301 /* libz.dylib */,
+				DC11303F15B6ACD300B397F7 /* CoreText.framework */,
 				DCB7F82515A590FC0049C591 /* QuartzCore.framework */,
 				DCE9BEC215A2E0C70077AAD7 /* MessageUI.framework */,
 				DCBBB3C5158A3DB1007C2301 /* SystemConfiguration.framework */,
@@ -550,7 +554,7 @@
 				GCC_PREFIX_HEADER = "IMeeting/IMeeting-Prefix.pch";
 				INFOPLIST_FILE = "IMeeting/IMeeting-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "113159CB-D436-4E2A-BF39-1531A5AC44F9";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "9591FBA6-0D81-4954-B742-47FEEB099BBA";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -567,7 +571,7 @@
 				GCC_PREFIX_HEADER = "IMeeting/IMeeting-Prefix.pch";
 				INFOPLIST_FILE = "IMeeting/IMeeting-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "113159CB-D436-4E2A-BF39-1531A5AC44F9";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "9591FBA6-0D81-4954-B742-47FEEB099BBA";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

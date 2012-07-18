@@ -12,6 +12,30 @@
 
 #import "ContactBean.h"
 
+// contact action key
+#define CONTACT_ACTION  @"action"
+
+// contact dirty type
+typedef enum {
+    contactAdd,
+    contactModify,
+    contactDelete
+} ContactDirtyType;
+
+
+// addressBook changed delegate
+@protocol AddressBookChangedDelegate <NSObject>
+
+@required
+
+// addressBook changed callback function
+- (void)addressBookChanged:(ABAddressBookRef)pAddressBook info:(NSDictionary *)pInfo context:(void *)pContext;
+
+@end
+
+
+
+
 @interface AddressBookManager : NSObject {
     // all contacts, contact id - groups dictionary
     // key is contact record id (int32_t)
@@ -32,8 +56,11 @@
 // share singleton AddressBookManager
 + (AddressBookManager *)shareAddressBookManager;
 
-// traversal address book, inportant, do it first
+// traversal addressBook, important, do it first
 - (void)traversalAddressBook;
+
+// get contact info by particular contact id
+- (ContactBean *)getContactInfoById:(NSInteger)pId;
 
 // get contacts by phone number: sub matching
 - (NSArray *)getContactByPhoneNumber:(NSString *)pPhoneNumber;
@@ -46,5 +73,11 @@
 
 // contacts display name array with user input phone number
 - (NSArray *)contactsDisplayNameArrayWithPhoneNumber:(NSString *)pPhoneNumber;
+
+// add addressBook changed callback observer
+- (void)addABChangedObserver:(NSObject *)pObserver;
+
+// remove addressBook changed callback observer
+- (void)removeABChangedObserver:(NSObject *)pObserver;
 
 @end
