@@ -85,6 +85,10 @@
     [((ContactsSelectContainerView *)self.view) initInMeetingAttendeesPhoneNumbers:pPhoneNumbers];
 }
 
+- (void)initPreinMeetingAttendeesPhoneNumbers:(NSArray *)pPhoneNumbers{
+    [((ContactsSelectContainerView *)self.view) initPreinMeetingAttendeesPhoneNumbers:pPhoneNumbers];
+}
+
 - (void)inviteNewAddedContactsToMeeting:(NSArray *)pPhoneNumbers{
     // check device short sessage service
     if([MFMessageComposeViewController canSendText]){        

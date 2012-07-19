@@ -15,4 +15,7 @@
 // init in meeting contacts list table view in meeting contacts info array
 - (void)initInMeetingAttendeesPhoneNumbers:(NSArray *)pPhoneNumbers;
 
+// init in meeting contacts list table view prein meeting contacts info array
+- (void)initPreinMeetingAttendeesPhoneNumbers:(NSArray *)pPhoneNumbers;
+
 @end

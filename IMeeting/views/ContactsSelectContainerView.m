@@ -91,6 +91,41 @@
     _mMeetingContactsListView.inMeetingAttendeesPhoneNumberArray = [NSMutableArray arrayWithArray:pPhoneNumbers];
 }
 
+- (void)initPreinMeetingAttendeesPhoneNumbers:(NSArray *)pPhoneNumbers{
+    // set meeting contacts list table view prein meeting attedees phone number array
+    for (NSString *_phoneNumber in pPhoneNumbers) {
+        // generate contact prein meeting attendees(get from server) phone number and add to meeting contacts list table view prein meeting section
+        ContactBean *_contact = nil;
+        
+        // get contacts from addressBook by phone number
+        NSArray *_contacts = [[AddressBookManager shareAddressBookManager] getContactByPhoneNumber:_phoneNumber];        
+        if ([_contacts count] > 0) {
+            // get first
+            _contact = [_contacts objectAtIndex:0];
+            
+            // set contact selected phone number
+            _contact.selectedPhoneNumber = _phoneNumber;
+            
+            // set contact select status image
+            _contact.selectStatusImg = CONTACT_SELECTED_PHOTO;
+        }
+        else {
+            // create and init an new contact bean object
+            _contact = [[ContactBean alloc] init];
+            // set his display name, selected phone number and phone number array
+            _contact.displayName = _phoneNumber;
+            _contact.selectedPhoneNumber = _phoneNumber;
+            _contact.phoneNumbers = [NSArray arrayWithObject:_phoneNumber];
+        }
+        
+        // add contact in meeting contacts list table view prein meeting section
+        [_mMeetingContactsListView.preinMeetingContactsInfoArrayRef addObject:_contact];
+    }
+    
+    // meeting contacts list table view reload data
+    [_mMeetingContactsListView reloadData];
+}
+
 - (void)addSelectedContactToMeetingWithIndexPath:(NSIndexPath *)pIndexPath andSelectedPhoneNumber:(NSString *)pSelectedPhoneNumber{
     // if the select contact not existed in meeting contacts list table view in meeting section
     if (![self.inMeetingContactsPhoneNumberArray containsObject:pSelectedPhoneNumber]) {

@@ -64,6 +64,7 @@
     
     // set in meeting attendee phone number array
     [_contactsSelectViewController initInMeetingAttendeesPhoneNumbers:[NSArray arrayWithObjects:@"13770662051", @"14751802319", @"13382794516", @"1234", nil]];
+    [_contactsSelectViewController initPreinMeetingAttendeesPhoneNumbers:[NSArray arrayWithObjects:@"18652096792", @"13813005146", @"4321", nil]];
     
     // push contacts select view controller to navigation view controller
     [self.navigationController pushViewController:_contactsSelectViewController animated:YES];

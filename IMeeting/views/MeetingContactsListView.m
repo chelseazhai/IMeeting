@@ -71,7 +71,7 @@
         [_inMeetingContactsInfoArray addObject:_contactBean];
     }
     
-    // init in meeting contacts info array from server and prein meeting contacts info array
+    // init in meeting contacts info array from server
     _inMeetingContactsInfoArrayRef = _inMeetingContactsInfoArray;
     
     // meeting contacts list table view reload data
