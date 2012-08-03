@@ -545,6 +545,7 @@
 		DCBBB3A6158A3BAE007C2301 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Wei Feng (873P3T58BW)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -554,7 +555,7 @@
 				GCC_PREFIX_HEADER = "IMeeting/IMeeting-Prefix.pch";
 				INFOPLIST_FILE = "IMeeting/IMeeting-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "9591FBA6-0D81-4954-B742-47FEEB099BBA";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "EC81D673-61E7-410F-95F7-99957BB1FAB6";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -562,6 +563,7 @@
 		DCBBB3A7158A3BAE007C2301 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Wei Feng (873P3T58BW)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -571,7 +573,7 @@
 				GCC_PREFIX_HEADER = "IMeeting/IMeeting-Prefix.pch";
 				INFOPLIST_FILE = "IMeeting/IMeeting-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "9591FBA6-0D81-4954-B742-47FEEB099BBA";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "EC81D673-61E7-410F-95F7-99957BB1FAB6";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

@@ -18,20 +18,34 @@
 #define CONTACT_PREINMEETING_PHOTO [UIImage imageNamed:@"ContactPreinMeeting.png"]
 
 @interface ContactsListTableViewCell : UITableViewCell {
+    // contact photo imageView photo image
+    UIImage *_mPhotoImg;
+    // contact display name label text
+    NSString *_mDisplayName;
+    // contact phone numbers array
+    NSArray *_mPhoneNumbersArray;
+    
+    // phone number matching index array
+    NSArray *_mPhoneNumberMatchingIndexs;
+    // name matching index array
+    NSArray *_mNameMatchingIndexs;
+    
     // contact photo imageButton
     UIButton *_mPhotoImgButton;
     // contact display name label
-    UILabel *_mDisplayNameLabel;
+    UIAttributedLabel *_mDisplayNameLabel;
     // contact phone numbers display label
     UILabel *_mPhoneNumbersLabel;
+    // contact phone numbers display attributed label parent view
+    UIView *_mPhoneNumbersAttributedLabelParentView;
 }
 
-// contact photo imageView photo image
 @property (nonatomic, retain) UIImage *photoImg;
-// contact diaplay name label text
 @property (nonatomic, retain) NSString *displayName;
-// contact phone numbers array
 @property (nonatomic, retain) NSArray *phoneNumbersArray;
+
+@property (nonatomic, retain) NSArray *phoneNumberMatchingIndexs;
+@property (nonatomic, retain) NSArray *nameMatchingIndexs;
 
 // add target/action for UIControlEventTouchDown event
 - (void)addImgButtonTarget:(id)pTarget andActionSelector:(SEL)pSelector;

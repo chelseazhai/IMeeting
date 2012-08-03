@@ -8,6 +8,17 @@
 
 #import <Foundation/Foundation.h>
 
+// gesture type
+typedef enum {
+    tap = 1 << 0,
+    swipe = 1 << 1,
+    longPress = 1 << 2,
+    pan = 1 << 3,
+    pinch = 1 << 4,
+    rotation = 1 << 5
+} GestureType;
+
+
 // long press finger mode
 typedef enum {
     single = 1 << 0,
@@ -32,6 +43,11 @@ typedef enum {
 
 @protocol UIViewGestureRecognizerDelegate <NSObject>
 
+@required
+
+// set supported gesture
+- (GestureType)supportedGestureInView:(UIView *)pView;
+
 @optional
 
 // set long press finger mode in view
@@ -54,5 +70,8 @@ typedef enum {
 
 // tap at view point, finger mode and count mode
 - (void)view:(UIView *)pView tapAtPoint:(CGPoint)pPoint andFingerMode:(TapFingerMode)pFingerMode andCountMode:(TapCountMode)pCountMode;
+
+// frame rectangle had been changed notification
+- (void)view:(UIView *)pView frameChanged:(CGRect)pNewFrame;
 
 @end

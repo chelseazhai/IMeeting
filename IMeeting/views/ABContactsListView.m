@@ -80,6 +80,8 @@
     cell.photoImg = _contactBean.selectStatusImg ? _contactBean.selectStatusImg : CONTACT_DEFAULT_PHOTO;
     cell.displayName = _contactBean.displayName;
     cell.phoneNumbersArray = _contactBean.phoneNumbers;
+    cell.phoneNumberMatchingIndexs = [_contactBean.extensionDic objectForKey:PHONENUMBER_MATCHING_INDEXS];
+    cell.nameMatchingIndexs = [_contactBean.extensionDic objectForKey:NAME_MATCHING_INDEXS];
     // add photo image button touchedDown event action
     [cell addImgButtonTarget:self andActionSelector:@selector(addContactForJoiningMeetingAction:)];
     

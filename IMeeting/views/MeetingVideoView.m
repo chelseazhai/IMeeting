@@ -34,6 +34,10 @@
 }
 */
 
+- (GestureType)supportedGestureInView:(UIView *)pView{
+    return swipe;
+}
+
 - (UISwipeGestureRecognizerDirection)swipeDirectionInView:(UIView *)pView{
     return UISwipeGestureRecognizerDirectionUp;
 }
