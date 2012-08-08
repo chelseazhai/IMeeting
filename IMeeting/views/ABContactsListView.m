@@ -152,26 +152,24 @@
     [((ContactsSelectContainerView *)self.superview) hideSoftKeyboardWhenBeginScroll];
 }
 
-- (void)addressBookChanged:(ABAddressBookRef)pAddressBook info:(NSDictionary *)pInfo context:(void *)pContext{
-    if (pInfo && 0 != [pInfo count]) {
-        // get changed contact id array
-        NSArray *_changedContactIdArr = [pInfo allKeys];
-        
-        for (NSNumber *_contactId in _changedContactIdArr) {
-            // get action
-            switch (((NSNumber *)[[pInfo objectForKey:_contactId] objectForKey:CONTACT_ACTION]).intValue) {
-                case contactAdd:
-                    [self insertRowAtIndexPath:[NSIndexPath indexPathForRow:[_mPresentContactsInfoArrayRef count] - 1 inSection:0] withRowAnimation:UITableViewRowAnimationLeft];
-                    break;
-                    
-                case contactModify:
-                    [self reloadRowAtIndexPath:[NSIndexPath indexPathForRow:[_mPresentContactsInfoArrayRef indexOfObject:[[AddressBookManager shareAddressBookManager] getContactInfoById:_contactId.intValue]] inSection:0] withRowAnimation:UITableViewRowAnimationMiddle];
-                    break;
-                    
-                case contactDelete:
-                    [self reloadData];
-                    break;
-            }
+- (void)addressBookChanged:(ABAddressBookRef)pAddressBook info:(NSDictionary *)pInfo observer:(id)pObserver{
+    // get changed contact id array
+    NSArray *_changedContactIdArr = [pInfo allKeys];
+    
+    for (NSNumber *_contactId in _changedContactIdArr) {
+        // get action
+        switch (((NSNumber *)[[pInfo objectForKey:_contactId] objectForKey:CONTACT_ACTION]).intValue) {
+            case contactAdd:
+                [(ABContactsListView *)pObserver insertRowAtIndexPath:[NSIndexPath indexPathForRow:[_mPresentContactsInfoArrayRef count] - 1 inSection:0] withRowAnimation:UITableViewRowAnimationLeft];
+                break;
+                
+            case contactModify:
+                [(ABContactsListView *)pObserver reloadRowAtIndexPath:[NSIndexPath indexPathForRow:[_mPresentContactsInfoArrayRef indexOfObject:[[AddressBookManager shareAddressBookManager] getContactInfoById:_contactId.intValue]] inSection:0] withRowAnimation:UITableViewRowAnimationMiddle];
+                break;
+                
+            case contactDelete:
+                [(ABContactsListView *)pObserver reloadData];
+                break;
         }
     }
 }
