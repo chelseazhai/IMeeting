@@ -50,7 +50,7 @@
         // create and init video list view title view
         _mVideoListViewTitleView = [UIButton buttonWithType:UIButtonTypeCustom];
         // set frame
-        _mVideoListViewTitleView.frame = CGRectMake(0.0, 0.0, VIDEOLISTVIEWTITLEBUTTON_WIDTH, [CommonUtils appNavigationBarHeight]);
+        _mVideoListViewTitleView.frame = CGRectMake(0.0, 0.0, VIDEOLISTVIEWTITLEBUTTON_WIDTH, [UIDevice currentDevice].navigationBarHeight);
         // set title
         [_mVideoListViewTitleView setTitle:NSLocalizedString(@"meeting detail info video view title", nil) forState:UIControlStateNormal];
         // set title font
@@ -70,7 +70,7 @@
         CGRect _screenBounds = [[UIScreen mainScreen] bounds];
         
         // update meeting detailInfo list container view frame
-        self.frame = CGRectMake(_screenBounds.origin.x, _screenBounds.origin.y, _screenBounds.size.width, _screenBounds.size.height - /*statusBar height*/[CommonUtils appStatusBarHeight] - /*navigationBar height*/[CommonUtils appNavigationBarHeight]);
+        self.frame = CGRectMake(_screenBounds.origin.x, _screenBounds.origin.y, _screenBounds.size.width, _screenBounds.size.height - /*statusBar height*/[UIDevice currentDevice].statusBarHeight - /*navigationBar default height*/[UIDevice currentDevice].navigationBarHeight);
         
         // create and init subviews
         // init meeting video view

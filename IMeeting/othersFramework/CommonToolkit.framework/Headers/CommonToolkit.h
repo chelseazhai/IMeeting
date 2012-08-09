@@ -67,6 +67,7 @@
 #import "UIActionSheet+Extension.h"
 #import "UIImage+Extension.h"
 #import "UITableView+Extension.h"
+#import "UIDevice+Extension.h"
 
 #import "UISoftKeyboard.h"
 #import "UISoftKeyboardCell.h"
