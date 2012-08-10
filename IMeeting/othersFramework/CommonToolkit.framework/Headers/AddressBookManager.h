@@ -28,11 +28,27 @@ typedef enum {
 } ContactDirtyType;
 
 
-// contact searched matching type
+// contact searched name matching type
+typedef enum {
+    fuzzy,
+    order
+} ContactNameMatchingType;
+
+
+// contact searched phone number matching type
 typedef enum {
     full,
-    order
-} ContactMatchingType;
+    sub
+} ContactPhoneNumberMatchingType;
+
+
+// contact searched sorted type
+typedef enum {
+    identity,
+    phonetics
+} ContactSortedType;
+
+
 
 
 // addressBook changed delegate
@@ -57,6 +73,9 @@ typedef enum {
     // all contacts info array, object is contact bean
     NSMutableArray *_mAllContactsInfoArray;
     
+    // all sorted contacts info array, object is contact bean
+    NSMutableArray *_mAllSortedContactsInfoArray;
+    
     // contact search result dictionary
     // key is search keyword (NSString)
     // value is array of contact bean (ContactBean) and contact matching index array dictionary
@@ -67,6 +86,8 @@ typedef enum {
 }
 
 @property (nonatomic, readonly) NSMutableArray *allContactsInfoArray;
+
+@property (nonatomic, readonly) NSMutableArray *allSortedContactsInfoArray;
 
 // share singleton AddressBookManager
 + (AddressBookManager *)shareAddressBookManager;
@@ -80,11 +101,14 @@ typedef enum {
 // get contacts by phone number: sub matching
 - (NSArray *)getContactByPhoneNumber:(NSString *)pPhoneNumber;
 
+// get contacts by phone number with matching type and sorted type
+- (NSArray *)getContactByPhoneNumber:(NSString *)pPhoneNumber matchingType:(ContactPhoneNumberMatchingType)pPhoneNumberMatchingType orderBy:(ContactSortedType)pSortedType;
+
 // get contacts by name(not chinaese character): fuzzy matching
 - (NSArray *)getContactByName:(NSString *)pName;
 
-// get contacts by name with matching type
-- (NSArray *)getContactByName:(NSString *)pName andMatchingType:(ContactMatchingType)pType;
+// get contacts by name with matching type and sorted type
+- (NSArray *)getContactByName:(NSString *)pName matchingType:(ContactNameMatchingType)pNameMatchingType orderBy:(ContactSortedType)pSortedType;
 
 // get contact end
 - (void)getContactEnd;

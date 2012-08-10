@@ -13,9 +13,6 @@
 // validate processor and its implemetation method
 + (BOOL)validateProcessor:(id)pProcessor andSelector:(SEL)pSelector;
 
-// convert NSInteger to binary array(NSNumber *)
-+ (NSArray *)convertIntegerToBinaryArray:(NSInteger)pInteger;
-
 @end
 
 

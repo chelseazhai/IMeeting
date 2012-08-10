@@ -123,7 +123,7 @@
         _mInputDiaplayLabel.textAlignment = UITextAlignmentCenter;
         _mInputDiaplayLabel.textColor = [UIColor whiteColor];
         _mInputDiaplayLabel.adjustsFontSizeToFitWidth = YES;
-        _mInputDiaplayLabel.font = [UIFont boldSystemFontOfSize:MAX_CUSTOMBOARD_DISPLAYFONTSIZE];
+        _mInputDiaplayLabel.font = [UIFont boldSystemFontOfSize:_mSoftKeyboardType == iosSystem ? MAX_SYSTEMBOARD_DISPLAYFONTSIZE : MAX_CUSTOMBOARD_DISPLAYFONTSIZE];
         // set delegate
         _mInputDiaplayLabel.delegate = self;
         

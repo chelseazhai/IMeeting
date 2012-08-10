@@ -98,7 +98,7 @@
         ContactBean *_contact = nil;
         
         // get contacts from addressBook by phone number
-        NSArray *_contacts = [[AddressBookManager shareAddressBookManager] getContactByPhoneNumber:_phoneNumber];        
+        NSArray *_contacts = [[AddressBookManager shareAddressBookManager] getContactByPhoneNumber:_phoneNumber matchingType:full orderBy:identity];
         if ([_contacts count] > 0) {
             // get first
             _contact = [_contacts objectAtIndex:0];
@@ -110,8 +110,10 @@
             _contact.selectStatusImg = CONTACT_SELECTED_PHOTO;
             
             // reset contact matching index array
-            [_contact.extensionDic removeObjectForKey:PHONENUMBER_MATCHING_INDEXS];
-            [_contact.extensionDic removeObjectForKey:NAME_MATCHING_INDEXS];
+            for (ContactBean *__contact in _contacts) {
+                [__contact.extensionDic removeObjectForKey:PHONENUMBER_MATCHING_INDEXS];
+                [__contact.extensionDic removeObjectForKey:NAME_MATCHING_INDEXS];
+            }
         }
         else {
             // create and init an new contact bean object
