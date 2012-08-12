@@ -49,6 +49,15 @@ typedef enum {
 } ContactSortedType;
 
 
+// NSArray addressBook category
+@interface NSArray (AddressBook)
+
+// phonetics sorted contacts info array
+- (NSMutableArray *)phoneticsSortedContactsInfoArray;
+
+@end
+
+
 
 
 // addressBook changed delegate
@@ -73,9 +82,6 @@ typedef enum {
     // all contacts info array, object is contact bean
     NSMutableArray *_mAllContactsInfoArray;
     
-    // all sorted contacts info array, object is contact bean
-    NSMutableArray *_mAllSortedContactsInfoArray;
-    
     // contact search result dictionary
     // key is search keyword (NSString)
     // value is array of contact bean (ContactBean) and contact matching index array dictionary
@@ -86,8 +92,6 @@ typedef enum {
 }
 
 @property (nonatomic, readonly) NSMutableArray *allContactsInfoArray;
-
-@property (nonatomic, readonly) NSMutableArray *allSortedContactsInfoArray;
 
 // share singleton AddressBookManager
 + (AddressBookManager *)shareAddressBookManager;

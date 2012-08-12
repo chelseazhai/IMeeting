@@ -39,7 +39,7 @@
     self = [super initWithFrame:frame];
     if (self) {
         // get all contacts info array from addressBook
-        _mAllContactsInfoArrayInABRef = _mPresentContactsInfoArrayRef = [AddressBookManager shareAddressBookManager].allSortedContactsInfoArray;
+        _mAllContactsInfoArrayInABRef = _mPresentContactsInfoArrayRef = [[AddressBookManager shareAddressBookManager].allContactsInfoArray phoneticsSortedContactsInfoArray];
         
         // set table view dataSource and delegate
         self.dataSource = self;
@@ -153,6 +153,9 @@
 }
 
 - (void)addressBookChanged:(ABAddressBookRef)pAddressBook info:(NSDictionary *)pInfo observer:(id)pObserver{
+    // reset all contacts info array from addressBook
+    _mAllContactsInfoArrayInABRef = _mPresentContactsInfoArrayRef = [[AddressBookManager shareAddressBookManager].allContactsInfoArray phoneticsSortedContactsInfoArray];
+    
     // get changed contact id array
     NSArray *_changedContactIdArr = [pInfo allKeys];
     
