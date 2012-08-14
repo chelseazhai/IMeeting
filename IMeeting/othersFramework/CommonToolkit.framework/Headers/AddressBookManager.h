@@ -60,6 +60,17 @@ typedef enum {
 
 
 
+// NSString addressBook category
+@interface NSString (AddressBook)
+
+// get contact display name array separated by character regular expression ([A-Za-z0-9]*)
+- (NSArray *)nameArraySeparatedByCharacter;
+
+@end
+
+
+
+
 // addressBook changed delegate
 @protocol AddressBookChangedDelegate <NSObject>
 

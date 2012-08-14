@@ -213,12 +213,16 @@
     }
 }
 
+- (NSString *)contactsSearchingParameter{
+    return nil == _mInputDiaplayLabel.text ? @"" : _mInputDiaplayLabel.text;
+}
+
 - (void)userInputTextDidChanged:(UITextField *)pTextField{
     // update user input diaplay view label text
     _mInputDiaplayLabel.text = pTextField.text;
     
     // call parent view method:(void)searchContactWithParameter:
-    [((ContactsSelectContainerView *)self.superview) searchContactWithParameter:nil == pTextField.text ? @"" : pTextField.text];
+    [((ContactsSelectContainerView *)self.superview) searchContactWithParameter];
 }
 
 - (void)indicateSoftKeyboard{

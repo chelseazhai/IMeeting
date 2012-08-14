@@ -21,6 +21,7 @@ typedef enum{
     iosSystem
 } SoftKeyboardType;
 
+
 @interface ContactsProcessToolbar : UIView <UITextFieldDelegate, UISoftKeyboardDelegate> {
     // softKeyboard show or hide indicate button
     UIButton *_mSoftKeyboardIndicateBtn;
@@ -50,5 +51,8 @@ typedef enum{
 @property (nonatomic, readonly) SoftKeyboardType softKeyboardType;
 
 @property (nonatomic, readonly) BOOL softKeyboardHidden;
+
+// get contacts searching parameter
+- (NSString *)contactsSearchingParameter;
 
 @end

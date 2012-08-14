@@ -14,6 +14,9 @@
 
 #import "ContactBean+IMeeting.h"
 
+// phonetics indication string
+#define PHONETICSINDIACATION_STRING  @"ABCDEFGHIJKLMNOPQRSTUVWXYZ#"
+
 // ContactsListTableView extension
 @interface ABContactsListView ()
 
@@ -40,6 +43,10 @@
     if (self) {
         // get all contacts info array from addressBook
         _mAllContactsInfoArrayInABRef = _mPresentContactsInfoArrayRef = [[AddressBookManager shareAddressBookManager].allContactsInfoArray phoneticsSortedContactsInfoArray];
+        // remove each contact extension dictionary
+        for (ContactBean *_contact in _mAllContactsInfoArrayInABRef) {
+            [_contact.extensionDic removeAllObjects];
+        }
         
         // set table view dataSource and delegate
         self.dataSource = self;
@@ -86,6 +93,79 @@
     [cell addImgButtonTarget:self andActionSelector:@selector(addContactForJoiningMeetingAction:)];
     
     return cell;
+}
+
+- (NSArray *)sectionIndexTitlesForTableView:(UITableView *)tableView{
+    // define phonetics indication string array
+    NSMutableSet *_indices = [[NSMutableSet alloc] init];
+    
+    // process present contacts info array
+    for (ContactBean *_contact in _mPresentContactsInfoArrayRef) {
+        // contact has name
+        if ([_contact.namePhonetics count] > 0) {
+            [_indices addObject:[[[[_contact.namePhonetics objectAtIndex:0] objectAtIndex:0] substringToIndex:1] uppercaseString]];
+        }
+        // contact has no name
+        else {
+            [_indices addObject:[PHONETICSINDIACATION_STRING substringFromIndex:[PHONETICSINDIACATION_STRING length] - 1]];
+        }
+    }
+    
+    return [[_indices allObjects] sortedArrayUsingComparator:^(NSString *_string1, NSString *_string2){
+        NSComparisonResult _stringComparisonResult = NSOrderedSame;
+        
+        // compare
+        if ([_string1 isEqualToString:[PHONETICSINDIACATION_STRING substringFromIndex:[PHONETICSINDIACATION_STRING length] - 1]]) {
+            _stringComparisonResult = NSOrderedDescending;
+        }
+        else if ([_string2 isEqualToString:[PHONETICSINDIACATION_STRING substringFromIndex:[PHONETICSINDIACATION_STRING length] - 1]]) {
+            _stringComparisonResult = NSOrderedAscending;
+        }
+        else {
+            _stringComparisonResult = [_string1 compare:_string2];
+        }
+        
+        return _stringComparisonResult;
+    }];
+}
+
+- (NSInteger)tableView:(UITableView *)tableView sectionForSectionIndexTitle:(NSString *)title atIndex:(NSInteger)index{
+    // process procent contacts info array
+    for (NSInteger _index = 0; _index < [_mPresentContactsInfoArrayRef count]; _index++) {
+        // 26 chars, 'ABCD...XYZ'
+        if (![[title lowercaseString] isEqualToString:[PHONETICSINDIACATION_STRING substringFromIndex:[PHONETICSINDIACATION_STRING length] - 1]]) {
+            // contact has name
+            if ([((ContactBean *)[_mPresentContactsInfoArrayRef objectAtIndex:_index]).namePhonetics count] > 0) {
+                // get the matching contacts header
+                if ([[[[((ContactBean *)[_mPresentContactsInfoArrayRef objectAtIndex:_index]).namePhonetics objectAtIndex:0] objectAtIndex:0] substringToIndex:1] compare:[title lowercaseString]] >= NSOrderedSame) {
+                    // scroll to row at indexPath
+                    [self scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:_index inSection:0] atScrollPosition:UITableViewScrollPositionTop animated:NO];
+                    
+                    break;
+                }
+            }
+            // contact has no name
+            else {
+                // scroll to row at indexPath
+                [self scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:_index inSection:0] atScrollPosition:UITableViewScrollPositionTop animated:NO];
+                
+                break;
+            }
+        }
+        // '#'
+        else {
+            // contact has no name
+            if ([((ContactBean *)[_mPresentContactsInfoArrayRef objectAtIndex:_index]).namePhonetics count] == 0) {
+                // scroll to row at indexPath
+                [self scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:_index inSection:0] atScrollPosition:UITableViewScrollPositionTop animated:NO];
+                
+                break;
+            }
+        }
+    }
+    
+    // default value
+    return -1;
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section{
@@ -153,27 +233,68 @@
 }
 
 - (void)addressBookChanged:(ABAddressBookRef)pAddressBook info:(NSDictionary *)pInfo observer:(id)pObserver{
-    // reset all contacts info array from addressBook
-    _mAllContactsInfoArrayInABRef = _mPresentContactsInfoArrayRef = [[AddressBookManager shareAddressBookManager].allContactsInfoArray phoneticsSortedContactsInfoArray];
+    // reset all contacts info array from addressBook and present contacts info array of addressBook contacts list table view
+    NSArray *_newAllContactsInfoArrayInAB = [[AddressBookManager shareAddressBookManager].allContactsInfoArray phoneticsSortedContactsInfoArray];
     
-    // get changed contact id array
-    NSArray *_changedContactIdArr = [pInfo allKeys];
+    // get addressBook contacts list table view parent view
+    ContactsSelectContainerView *_contactsSelectContainerView = (ContactsSelectContainerView *)self.superview;
     
-    for (NSNumber *_contactId in _changedContactIdArr) {
+    // process changed contact id array
+    for (NSNumber *_contactId in [pInfo allKeys]) {
         // get action
         switch (((NSNumber *)[[pInfo objectForKey:_contactId] objectForKey:CONTACT_ACTION]).intValue) {
             case contactAdd:
-                //[pObserver insertRowAtIndexPath:[NSIndexPath indexPathForRow:[_mPresentContactsInfoArrayRef count] - 1 inSection:0] withRowAnimation:UITableViewRowAnimationLeft];
-                [pObserver reloadData];
+                {
+                    // add to all contacts info array in addressBook reference
+                    for (NSInteger _index = 0; _index < [_newAllContactsInfoArrayInAB count]; _index++) {
+                        if (((ContactBean *)[_newAllContactsInfoArrayInAB objectAtIndex:_index]).id == _contactId.integerValue) {
+                            [_mAllContactsInfoArrayInABRef insertObject:[_newAllContactsInfoArrayInAB objectAtIndex:_index] atIndex:_index];
+                            
+                            [_contactsSelectContainerView searchContactWithParameter];
+                            
+                            break;
+                        }
+                    }
+                }
                 break;
                 
             case contactModify:
-                //[pObserver reloadRowAtIndexPath:[NSIndexPath indexPathForRow:[_mPresentContactsInfoArrayRef indexOfObject:[[AddressBookManager shareAddressBookManager] getContactInfoById:_contactId.intValue]] inSection:0] withRowAnimation:UITableViewRowAnimationMiddle];
-                [pObserver reloadData];
+                {
+                    // save the modify contact index of all contacts info array in addressBook reference and new temp all contacts info array in addressBook
+                    NSInteger _oldindex, _newIndex;
+                    for (NSInteger _index = 0; _index < [_mAllContactsInfoArrayInABRef count]; _index++) {
+                        if (((ContactBean *)[_mAllContactsInfoArrayInABRef objectAtIndex:_index]).id == _contactId.integerValue) {
+                            _oldindex = _index;
+                            
+                            _newIndex = [_newAllContactsInfoArrayInAB indexOfObject:[_mAllContactsInfoArrayInABRef objectAtIndex:_index]];
+                            
+                            break;
+                        }
+                    }
+                    
+                    // check the two indexes
+                    if (_oldindex != _newIndex) {
+                        [_mAllContactsInfoArrayInABRef removeObjectAtIndex:_oldindex];
+                        [_mAllContactsInfoArrayInABRef insertObject:[_newAllContactsInfoArrayInAB objectAtIndex:_newIndex] atIndex:_newIndex];
+                    }
+                    
+                    [_contactsSelectContainerView searchContactWithParameter];
+                }
                 break;
                 
             case contactDelete:
-                [pObserver reloadData];
+                {
+                    // delete from all contacts info array in addressBook reference
+                    for (NSInteger _index = 0; _index < [_mAllContactsInfoArrayInABRef count]; _index++) {
+                        if (((ContactBean *)[_mAllContactsInfoArrayInABRef objectAtIndex:_index]).id == _contactId.integerValue) {
+                            [_mAllContactsInfoArrayInABRef removeObjectAtIndex:_index];
+                            
+                            [_contactsSelectContainerView searchContactWithParameter];
+                            
+                            break;
+                        }
+                    }
+                }
                 break;
         }
     }

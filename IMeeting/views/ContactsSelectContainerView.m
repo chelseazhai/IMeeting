@@ -238,9 +238,9 @@
     }
 }
 
-- (void)searchContactWithParameter:(NSString *)pParameter{
+- (void)searchContactWithParameter{
     // check search parameter
-    if ([pParameter isEqualToString:@""]) {
+    if ([[_mContactsProcessToolbar contactsSearchingParameter] isEqualToString:@""]) {
         // reset contact matching index array
         for (ContactBean *_contact in _mABContactsListView.allContactsInfoArrayInABRef) {
             [_contact.extensionDic removeObjectForKey:PHONENUMBER_MATCHING_INDEXS];
@@ -248,7 +248,7 @@
         }
         
         // show all contacts in addressBook
-        _mABContactsListView.presentContactsInfoArrayRef = [NSMutableArray arrayWithArray:_mABContactsListView.allContactsInfoArrayInABRef];
+        _mABContactsListView.presentContactsInfoArrayRef = _mABContactsListView.allContactsInfoArrayInABRef;
     }
     else {
         // define temp array
@@ -258,12 +258,12 @@
         switch (_mContactsProcessToolbar.softKeyboardType) {
             case custom:
                 // search by phone number
-                _tmpArray = [[AddressBookManager shareAddressBookManager] getContactByPhoneNumber:pParameter];
+                _tmpArray = [[AddressBookManager shareAddressBookManager] getContactByPhoneNumber:[_mContactsProcessToolbar contactsSearchingParameter]];
                 break;
                 
             case iosSystem:
                 // search by name
-                _tmpArray = [[AddressBookManager shareAddressBookManager] getContactByName:pParameter];
+                _tmpArray = [[AddressBookManager shareAddressBookManager] getContactByName:[_mContactsProcessToolbar contactsSearchingParameter]];
                 break;
         }
         
