@@ -13,6 +13,9 @@
 // contains sub string
 - (BOOL)containsSubString:(NSString *)pString;
 
+// range array of string
+- (NSArray *)rangesOfString:(NSString *)pString;
+
 // string to array with separated string
 - (NSArray *)toArrayWithSeparator:(NSString *)pSeparator;
 

@@ -29,6 +29,7 @@
 
 @synthesize photoImg = _mPhotoImg;
 @synthesize displayName = _mDisplayName;
+@synthesize fullNames = _mFullNames;
 @synthesize phoneNumbersArray = _mPhoneNumbersArray;
 
 @synthesize phoneNumberMatchingIndexs = _mPhoneNumberMatchingIndexs;
@@ -179,8 +180,24 @@
         // set font
         [_attributedDisplayName setFont:[UIFont boldSystemFontOfSize:16.0]];
         // set attributed display name text color
+        /*
         for (NSNumber *_index in nameMatchingIndexs) {
             [_attributedDisplayName setTextColor:MATCHINGTEXTCOLOR range:[_mDisplayName rangeOfString:[[_mDisplayName nameArraySeparatedByCharacter] objectAtIndex:_index.integerValue]]];
+        }
+         */
+        for (NSDictionary *_indexDic in nameMatchingIndexs) {
+            // get matching name character index
+            NSInteger _nameMatchingCharIndex = 0;
+            for (NSInteger _index = 0; _index < [_mFullNames count]; _index++) {
+                if (_index < ((NSNumber *)[_indexDic.allKeys objectAtIndex:0]).integerValue && [[_mFullNames objectAtIndex:_index] isEqualToString:[[_mDisplayName nameArraySeparatedByCharacter] objectAtIndex:((NSNumber *)[_indexDic.allKeys objectAtIndex:0]).integerValue]]) {
+                    _nameMatchingCharIndex += 1;
+                }
+            }
+            
+            // get range of name matching
+            NSRange _range = NSRangeFromString([[_mDisplayName rangesOfString:[[_mDisplayName nameArraySeparatedByCharacter] objectAtIndex:((NSNumber *)[_indexDic.allKeys objectAtIndex:0]).integerValue]] objectAtIndex:_nameMatchingCharIndex]);
+            
+            [_attributedDisplayName setTextColor:MATCHINGTEXTCOLOR range:NSMakeRange(_range.location, NAME_CHARACTER_FULLMATCHING.integerValue == ((NSNumber *)[_indexDic.allValues objectAtIndex:0]).integerValue ? _range.length : ((NSNumber *)[_indexDic.allValues objectAtIndex:0]).integerValue)];
         }
         
         // set display name label attributed text

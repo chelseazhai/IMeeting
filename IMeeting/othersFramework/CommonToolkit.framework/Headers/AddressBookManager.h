@@ -20,6 +20,9 @@
 // contact name matching index array key
 #define NAME_MATCHING_INDEXS    @"nameMatchingIndexs"
 
+// contact name character full matching
+#define NAME_CHARACTER_FULLMATCHING [NSNumber numberWithInteger:-1]
+
 // contact dirty type
 typedef enum {
     contactAdd,

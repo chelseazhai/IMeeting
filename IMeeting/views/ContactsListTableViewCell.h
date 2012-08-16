@@ -22,6 +22,8 @@
     UIImage *_mPhotoImg;
     // contact display name label text
     NSString *_mDisplayName;
+    // contact full name array
+    NSArray *_mFullNames;
     // contact phone numbers array
     NSArray *_mPhoneNumbersArray;
     
@@ -42,6 +44,7 @@
 
 @property (nonatomic, retain) UIImage *photoImg;
 @property (nonatomic, retain) NSString *displayName;
+@property (nonatomic, retain) NSArray *fullNames;
 @property (nonatomic, retain) NSArray *phoneNumbersArray;
 
 @property (nonatomic, retain) NSArray *phoneNumberMatchingIndexs;
