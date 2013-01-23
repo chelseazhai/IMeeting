@@ -2,7 +2,7 @@
 //  UIImage+Extension.h
 //  CommonToolkit
 //
-//  Created by  on 12-7-3.
+//  Created by Ares on 12-7-3.
 //  Copyright (c) 2012年 richitec. All rights reserved.
 //
 

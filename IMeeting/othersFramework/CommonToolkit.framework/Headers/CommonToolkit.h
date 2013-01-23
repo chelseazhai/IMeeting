@@ -2,7 +2,7 @@
 //  CommonToolkit.h
 //  CommonToolkit
 //
-//  Created by  on 12-6-14.
+//  Created by Ares on 12-6-14.
 //  Copyright (c) 2012年 richitec. All rights reserved.
 //
 
@@ -18,6 +18,8 @@
 
 #import "HttpUtil.h"
 #import "HttpUtil+Signature.h"
+
+#import "PinyinUtils.h"
 
 // FoundationExtension
 #import "NSArray+Extension.h"
