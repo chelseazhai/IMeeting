@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		DC11304015B6ACD300B397F7 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC11303F15B6ACD300B397F7 /* CoreText.framework */; };
+		DC857500174E0311008D8B76 /* CommonToolkit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC8574FF174E0311008D8B76 /* CommonToolkit.framework */; };
+		DC857510174E0547008D8B76 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = DC85750C174E0547008D8B76 /* InfoPlist.strings */; };
+		DC857511174E0547008D8B76 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = DC85750E174E0547008D8B76 /* Localizable.strings */; };
 		DCB7F80315A548CC0049C591 /* MeetingVideoView.m in Sources */ = {isa = PBXBuildFile; fileRef = DCB7F80215A548CC0049C591 /* MeetingVideoView.m */; };
 		DCB7F80615A549020049C591 /* MeetingAttendeesListView.m in Sources */ = {isa = PBXBuildFile; fileRef = DCB7F80515A549020049C591 /* MeetingAttendeesListView.m */; };
 		DCB7F80D15A54B390049C591 /* MeetingListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DCB7F80C15A54B390049C591 /* MeetingListViewController.m */; };
@@ -18,9 +21,6 @@
 		DCBBB390158A3BAE007C2301 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DCBBB38F158A3BAE007C2301 /* CoreGraphics.framework */; };
 		DCBBB398158A3BAE007C2301 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = DCBBB397158A3BAE007C2301 /* main.m */; };
 		DCBBB39C158A3BAE007C2301 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = DCBBB39B158A3BAE007C2301 /* AppDelegate.m */; };
-		DCBBB3B1158A3C7D007C2301 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = DCBBB3AF158A3C7D007C2301 /* InfoPlist.strings */; };
-		DCBBB3B8158A3C9D007C2301 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = DCBBB3B6158A3C9D007C2301 /* Localizable.strings */; };
-		DCBBB3BE158A3D99007C2301 /* CommonToolkit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DCBBB3BD158A3D99007C2301 /* CommonToolkit.framework */; };
 		DCBBB3C0158A3D9F007C2301 /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DCBBB3BF158A3D9F007C2301 /* AddressBook.framework */; };
 		DCBBB3C2158A3DA8007C2301 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DCBBB3C1158A3DA8007C2301 /* CFNetwork.framework */; };
 		DCBBB3C4158A3DAD007C2301 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DCBBB3C3158A3DAD007C2301 /* MobileCoreServices.framework */; };
@@ -47,6 +47,13 @@
 
 /* Begin PBXFileReference section */
 		DC11303F15B6ACD300B397F7 /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
+		DC8574FF174E0311008D8B76 /* CommonToolkit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CommonToolkit.framework; path = IMeeting/OtherFrameworks/CommonToolkit.framework; sourceTree = "<group>"; };
+		DC85750D174E0547008D8B76 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = Resources/Internationalization/en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		DC85750F174E0547008D8B76 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = Resources/Internationalization/en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		DC857512174E0554008D8B76 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "Resources/Internationalization/zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
+		DC857513174E0554008D8B76 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "Resources/Internationalization/zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		DC857514174E055D008D8B76 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "Resources/Internationalization/zh-Hant.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
+		DC857515174E055D008D8B76 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "Resources/Internationalization/zh-Hant.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		DCB7F80115A548CC0049C591 /* MeetingVideoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MeetingVideoView.h; path = views/MeetingVideoView.h; sourceTree = "<group>"; };
 		DCB7F80215A548CC0049C591 /* MeetingVideoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MeetingVideoView.m; path = views/MeetingVideoView.m; sourceTree = "<group>"; };
 		DCB7F80415A549020049C591 /* MeetingAttendeesListView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MeetingAttendeesListView.h; path = views/MeetingAttendeesListView.h; sourceTree = "<group>"; };
@@ -60,18 +67,11 @@
 		DCBBB38B158A3BAE007C2301 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		DCBBB38D158A3BAE007C2301 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		DCBBB38F158A3BAE007C2301 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		DCBBB393158A3BAE007C2301 /* IMeeting-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "IMeeting-Info.plist"; sourceTree = "<group>"; };
+		DCBBB393158A3BAE007C2301 /* IMeeting-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "IMeeting-Info.plist"; sourceTree = "<group>"; };
 		DCBBB397158A3BAE007C2301 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		DCBBB399158A3BAE007C2301 /* IMeeting-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "IMeeting-Prefix.pch"; sourceTree = "<group>"; };
+		DCBBB399158A3BAE007C2301 /* IMeeting-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "IMeeting-Prefix.pch"; sourceTree = "<group>"; };
 		DCBBB39A158A3BAE007C2301 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		DCBBB39B158A3BAE007C2301 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		DCBBB3B0158A3C7D007C2301 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = internationalization/en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		DCBBB3B2158A3C88007C2301 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "internationalization/zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
-		DCBBB3B4158A3C92007C2301 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "internationalization/zh-Hant.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
-		DCBBB3B7158A3C9D007C2301 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = internationalization/en.lproj/Localizable.strings; sourceTree = "<group>"; };
-		DCBBB3B9158A3CA5007C2301 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "internationalization/zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
-		DCBBB3BB158A3CAD007C2301 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "internationalization/zh-Hant.lproj/Localizable.strings"; sourceTree = "<group>"; };
-		DCBBB3BD158A3D99007C2301 /* CommonToolkit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CommonToolkit.framework; path = IMeeting/othersFramework/CommonToolkit.framework; sourceTree = "<group>"; };
 		DCBBB3BF158A3D9F007C2301 /* AddressBook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBook.framework; path = System/Library/Frameworks/AddressBook.framework; sourceTree = SDKROOT; };
 		DCBBB3C1158A3DA8007C2301 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		DCBBB3C3158A3DAD007C2301 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
@@ -111,6 +111,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DC857500174E0311008D8B76 /* CommonToolkit.framework in Frameworks */,
 				DCC03642159C43E700D19A26 /* libicucore.dylib in Frameworks */,
 				DCBBB3C8158A3DB5007C2301 /* libz.dylib in Frameworks */,
 				DC11304015B6ACD300B397F7 /* CoreText.framework in Frameworks */,
@@ -120,7 +121,6 @@
 				DCBBB3C4158A3DAD007C2301 /* MobileCoreServices.framework in Frameworks */,
 				DCBBB3C2158A3DA8007C2301 /* CFNetwork.framework in Frameworks */,
 				DCBBB3C0158A3D9F007C2301 /* AddressBook.framework in Frameworks */,
-				DCBBB3BE158A3D99007C2301 /* CommonToolkit.framework in Frameworks */,
 				DCBBB38C158A3BAE007C2301 /* UIKit.framework in Frameworks */,
 				DCBBB38E158A3BAE007C2301 /* Foundation.framework in Frameworks */,
 				DCBBB390158A3BAE007C2301 /* CoreGraphics.framework in Frameworks */,
@@ -133,10 +133,10 @@
 		DCB7F7E815A52ABE0049C591 /* MeeingList */ = {
 			isa = PBXGroup;
 			children = (
-				DCB7F80B15A54B390049C591 /* MeetingListViewController.h */,
-				DCB7F80C15A54B390049C591 /* MeetingListViewController.m */,
 				DCB7F80F15A54BA80049C591 /* MeetingListView.h */,
 				DCB7F81015A54BA80049C591 /* MeetingListView.m */,
+				DCB7F80B15A54B390049C591 /* MeetingListViewController.h */,
+				DCB7F80C15A54B390049C591 /* MeetingListViewController.m */,
 			);
 			name = MeeingList;
 			sourceTree = "<group>";
@@ -162,8 +162,8 @@
 		DCBBB37C158A3BAE007C2301 = {
 			isa = PBXGroup;
 			children = (
-				DCBBB391158A3BAE007C2301 /* IMeeting */,
 				DCBBB38A158A3BAE007C2301 /* Frameworks */,
+				DCBBB391158A3BAE007C2301 /* IMeeting */,
 				DCBBB388158A3BAE007C2301 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -181,17 +181,17 @@
 			children = (
 				DCC03641159C43E700D19A26 /* libicucore.dylib */,
 				DCBBB3C7158A3DB5007C2301 /* libz.dylib */,
-				DC11303F15B6ACD300B397F7 /* CoreText.framework */,
-				DCB7F82515A590FC0049C591 /* QuartzCore.framework */,
-				DCE9BEC215A2E0C70077AAD7 /* MessageUI.framework */,
-				DCBBB3C5158A3DB1007C2301 /* SystemConfiguration.framework */,
-				DCBBB3C3158A3DAD007C2301 /* MobileCoreServices.framework */,
-				DCBBB3C1158A3DA8007C2301 /* CFNetwork.framework */,
 				DCBBB3BF158A3D9F007C2301 /* AddressBook.framework */,
-				DCBBB3BD158A3D99007C2301 /* CommonToolkit.framework */,
-				DCBBB38B158A3BAE007C2301 /* UIKit.framework */,
-				DCBBB38D158A3BAE007C2301 /* Foundation.framework */,
+				DCBBB3C1158A3DA8007C2301 /* CFNetwork.framework */,
+				DC8574FF174E0311008D8B76 /* CommonToolkit.framework */,
 				DCBBB38F158A3BAE007C2301 /* CoreGraphics.framework */,
+				DC11303F15B6ACD300B397F7 /* CoreText.framework */,
+				DCBBB38D158A3BAE007C2301 /* Foundation.framework */,
+				DCE9BEC215A2E0C70077AAD7 /* MessageUI.framework */,
+				DCBBB3C3158A3DAD007C2301 /* MobileCoreServices.framework */,
+				DCB7F82515A590FC0049C591 /* QuartzCore.framework */,
+				DCBBB3C5158A3DB1007C2301 /* SystemConfiguration.framework */,
+				DCBBB38B158A3BAE007C2301 /* UIKit.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -199,12 +199,12 @@
 		DCBBB391158A3BAE007C2301 /* IMeeting */ = {
 			isa = PBXGroup;
 			children = (
+				DCBBB3C9158A3DC3007C2301 /* App */,
 				DCBBB39A158A3BAE007C2301 /* AppDelegate.h */,
 				DCBBB39B158A3BAE007C2301 /* AppDelegate.m */,
-				DCBBB3C9158A3DC3007C2301 /* App */,
-				DCBBB3F3158A4D99007C2301 /* Utils */,
 				DCBBB3CA158A3E1A007C2301 /* Resources */,
 				DCBBB392158A3BAE007C2301 /* Supporting Files */,
+				DCBBB3F3158A4D99007C2301 /* Utils */,
 			);
 			path = IMeeting;
 			sourceTree = "<group>";
@@ -213,10 +213,10 @@
 			isa = PBXGroup;
 			children = (
 				DCBBB393158A3BAE007C2301 /* IMeeting-Info.plist */,
-				DCBBB3AF158A3C7D007C2301 /* InfoPlist.strings */,
-				DCBBB397158A3BAE007C2301 /* main.m */,
 				DCBBB399158A3BAE007C2301 /* IMeeting-Prefix.pch */,
-				DCBBB3B6158A3C9D007C2301 /* Localizable.strings */,
+				DC85750C174E0547008D8B76 /* InfoPlist.strings */,
+				DC85750E174E0547008D8B76 /* Localizable.strings */,
+				DCBBB397158A3BAE007C2301 /* main.m */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -224,9 +224,9 @@
 		DCBBB3C9158A3DC3007C2301 /* App */ = {
 			isa = PBXGroup;
 			children = (
-				DCBBB3D8158A3E43007C2301 /* System */,
-				DCBBB3D9158A3E4B007C2301 /* Meeting */,
 				DCBBB3DA158A3E71007C2301 /* Contacts */,
+				DCBBB3D9158A3E4B007C2301 /* Meeting */,
+				DCBBB3D8158A3E43007C2301 /* System */,
 			);
 			name = App;
 			sourceTree = "<group>";
@@ -309,15 +309,15 @@
 		DCBBB3DD158A43BD007C2301 /* ContactsSelect */ = {
 			isa = PBXGroup;
 			children = (
-				DCBBB3DE158A43EE007C2301 /* ContactsSelectViewController.h */,
-				DCBBB3DF158A43EE007C2301 /* ContactsSelectViewController.m */,
-				DCBBB3E1158A4446007C2301 /* ContactsSelectContainerView.h */,
-				DCBBB3E2158A4446007C2301 /* ContactsSelectContainerView.m */,
+				DCBBB3E4158A4493007C2301 /* ContactsList */,
 				DCBBB3EC158A4970007C2301 /* ContactsListTableViewCell.h */,
 				DCBBB3ED158A4970007C2301 /* ContactsListTableViewCell.m */,
-				DCBBB3E4158A4493007C2301 /* ContactsList */,
-				DCBBB3E5158A449F007C2301 /* In_PreinMeetingContactsList */,
 				DCC03656159C587500D19A26 /* ContactsProcessToolbar */,
+				DCBBB3E1158A4446007C2301 /* ContactsSelectContainerView.h */,
+				DCBBB3E2158A4446007C2301 /* ContactsSelectContainerView.m */,
+				DCBBB3DE158A43EE007C2301 /* ContactsSelectViewController.h */,
+				DCBBB3DF158A43EE007C2301 /* ContactsSelectViewController.m */,
+				DCBBB3E5158A449F007C2301 /* In_PreinMeetingContactsList */,
 			);
 			name = ContactsSelect;
 			sourceTree = "<group>";
@@ -352,10 +352,10 @@
 		DCC03656159C587500D19A26 /* ContactsProcessToolbar */ = {
 			isa = PBXGroup;
 			children = (
-				DCC03658159C58A400D19A26 /* ContactsProcessToolbar.h */,
-				DCC03659159C58A400D19A26 /* ContactsProcessToolbar.m */,
 				DCC0365B159C58C200D19A26 /* ContactsProcessSoftKeyboard.h */,
 				DCC0365C159C58C200D19A26 /* ContactsProcessSoftKeyboard.m */,
+				DCC03658159C58A400D19A26 /* ContactsProcessToolbar.h */,
+				DCC03659159C58A400D19A26 /* ContactsProcessToolbar.m */,
 			);
 			name = ContactsProcessToolbar;
 			sourceTree = "<group>";
@@ -372,11 +372,11 @@
 		DCE9BEA015A2A8760077AAD7 /* MeetingDetailInfo */ = {
 			isa = PBXGroup;
 			children = (
-				DCE9BEA215A2A8B20077AAD7 /* MeetingDetailInfoViewController.h */,
-				DCE9BEA315A2A8B20077AAD7 /* MeetingDetailInfoViewController.m */,
+				DCB7F7EA15A52D7D0049C591 /* MeetingAttendeesList */,
 				DCE9BEA515A2A8D30077AAD7 /* MeetingDetailInfoContainerView.h */,
 				DCE9BEA615A2A8D30077AAD7 /* MeetingDetailInfoContainerView.m */,
-				DCB7F7EA15A52D7D0049C591 /* MeetingAttendeesList */,
+				DCE9BEA215A2A8B20077AAD7 /* MeetingDetailInfoViewController.h */,
+				DCE9BEA315A2A8B20077AAD7 /* MeetingDetailInfoViewController.m */,
 				DCB7F7EB15A52D8D0049C591 /* MeetingVideo */,
 			);
 			name = MeetingDetailInfo;
@@ -435,13 +435,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DCBBB3B1158A3C7D007C2301 /* InfoPlist.strings in Resources */,
-				DCBBB3B8158A3C9D007C2301 /* Localizable.strings in Resources */,
 				DCBBB3D1158A3E1A007C2301 /* ContactDefault.png in Resources */,
 				DCBBB3D2158A3E1A007C2301 /* ContactPreinMeeting.png in Resources */,
 				DCBBB3D3158A3E1A007C2301 /* ContactSelected.png in Resources */,
 				DCC036A2159C6E7900D19A26 /* CommonToolkitBundle.bundle in Resources */,
 				DCC036A3159C6E7900D19A26 /* Pinyin4jBundle.bundle in Resources */,
+				DC857510174E0547008D8B76 /* InfoPlist.strings in Resources */,
+				DC857511174E0547008D8B76 /* Localizable.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -474,22 +474,22 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		DCBBB3AF158A3C7D007C2301 /* InfoPlist.strings */ = {
+		DC85750C174E0547008D8B76 /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
-				DCBBB3B0158A3C7D007C2301 /* en */,
-				DCBBB3B2158A3C88007C2301 /* zh-Hans */,
-				DCBBB3B4158A3C92007C2301 /* zh-Hant */,
+				DC85750D174E0547008D8B76 /* en */,
+				DC857512174E0554008D8B76 /* zh-Hans */,
+				DC857514174E055D008D8B76 /* zh-Hant */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
-		DCBBB3B6158A3C9D007C2301 /* Localizable.strings */ = {
+		DC85750E174E0547008D8B76 /* Localizable.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
-				DCBBB3B7158A3C9D007C2301 /* en */,
-				DCBBB3B9158A3CA5007C2301 /* zh-Hans */,
-				DCBBB3BB158A3CAD007C2301 /* zh-Hant */,
+				DC85750F174E0547008D8B76 /* en */,
+				DC857513174E0554008D8B76 /* zh-Hans */,
+				DC857515174E055D008D8B76 /* zh-Hant */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";
@@ -559,7 +559,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: guanghui hu (TS23V9C6Z2)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)/IMeeting/othersFramework\"",
+					"\"$(SRCROOT)/IMeeting/OtherFrameworks\"",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "IMeeting/IMeeting-Prefix.pch";
@@ -578,7 +578,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: guanghui hu (TS23V9C6Z2)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)/IMeeting/othersFramework\"",
+					"\"$(SRCROOT)/IMeeting/OtherFrameworks\"",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "IMeeting/IMeeting-Prefix.pch";
