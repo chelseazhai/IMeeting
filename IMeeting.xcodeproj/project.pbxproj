@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		DC11304015B6ACD300B397F7 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC11303F15B6ACD300B397F7 /* CoreText.framework */; };
+		DC756B991752EFC400F287FA /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DC756B961752EFC400F287FA /* Default-568h@2x.png */; };
+		DC756B9A1752EFC400F287FA /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = DC756B971752EFC400F287FA /* Default.png */; };
+		DC756B9B1752EFC400F287FA /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DC756B981752EFC400F287FA /* Default@2x.png */; };
 		DC857500174E0311008D8B76 /* CommonToolkit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC8574FF174E0311008D8B76 /* CommonToolkit.framework */; };
 		DC857510174E0547008D8B76 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = DC85750C174E0547008D8B76 /* InfoPlist.strings */; };
 		DC857511174E0547008D8B76 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = DC85750E174E0547008D8B76 /* Localizable.strings */; };
@@ -47,6 +50,9 @@
 
 /* Begin PBXFileReference section */
 		DC11303F15B6ACD300B397F7 /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
+		DC756B961752EFC400F287FA /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-568h@2x.png"; path = "IMeeting/Resources/Splashes/Default-568h@2x.png"; sourceTree = SOURCE_ROOT; };
+		DC756B971752EFC400F287FA /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Default.png; path = IMeeting/Resources/Splashes/Default.png; sourceTree = SOURCE_ROOT; };
+		DC756B981752EFC400F287FA /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default@2x.png"; path = "IMeeting/Resources/Splashes/Default@2x.png"; sourceTree = SOURCE_ROOT; };
 		DC8574FF174E0311008D8B76 /* CommonToolkit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CommonToolkit.framework; path = IMeeting/OtherFrameworks/CommonToolkit.framework; sourceTree = "<group>"; };
 		DC85750D174E0547008D8B76 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = Resources/Internationalization/en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		DC85750F174E0547008D8B76 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = Resources/Internationalization/en.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -237,7 +243,7 @@
 				DCC0369F159C6E7900D19A26 /* Bundles */,
 				DCBBB3CB158A3E1A007C2301 /* Icons */,
 				DCBBB3CC158A3E1A007C2301 /* Images */,
-				DCBBB3D0158A3E1A007C2301 /* Splash */,
+				DCBBB3D0158A3E1A007C2301 /* Splashes */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -259,10 +265,14 @@
 			path = Images;
 			sourceTree = "<group>";
 		};
-		DCBBB3D0158A3E1A007C2301 /* Splash */ = {
+		DCBBB3D0158A3E1A007C2301 /* Splashes */ = {
 			isa = PBXGroup;
 			children = (
+				DC756B961752EFC400F287FA /* Default-568h@2x.png */,
+				DC756B971752EFC400F287FA /* Default.png */,
+				DC756B981752EFC400F287FA /* Default@2x.png */,
 			);
+			name = Splashes;
 			path = Splash;
 			sourceTree = "<group>";
 		};
@@ -442,6 +452,9 @@
 				DCC036A3159C6E7900D19A26 /* Pinyin4jBundle.bundle in Resources */,
 				DC857510174E0547008D8B76 /* InfoPlist.strings in Resources */,
 				DC857511174E0547008D8B76 /* Localizable.strings in Resources */,
+				DC756B991752EFC400F287FA /* Default-568h@2x.png in Resources */,
+				DC756B9A1752EFC400F287FA /* Default.png in Resources */,
+				DC756B9B1752EFC400F287FA /* Default@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
